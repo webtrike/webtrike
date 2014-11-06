@@ -167,7 +167,7 @@ runs shown in the main view.
 
 Developer documentation for the webtrike client interface uses [jsdoc3](https://github.com/jsdoc3/jsdoc). The documentation can be built using the script `builddocs.sh` and the `jsdoc.conf` file in the directory `assets/webtrike`.
 
-A [`README.md`](https//github.com/webtrike/webtrike/assets/webtrike/README.md) in the directory `assets/webtrike` gives and overview of the client interface and more details on the technologies that it uses.
+A [`README.md`](https://github.com/webtrike/webtrike/tree/master/assets/webtrike) in the directory `assets/webtrike` gives and overview of the client interface and more details on the technologies that it uses.
 
 ## Setup and Installation
 
