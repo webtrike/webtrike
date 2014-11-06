@@ -63,8 +63,9 @@ The webtrike-ui package has to communicate with a RESTful server side in order t
 * Example URL: http://localhost:8000/webtrike/rcf/models/
 * Http request method: GET 
 * JS module that GETs this object: [js/main.js](module-main.html)
-* Returns an array of JSON objects representing the models that can be parameterized and submitted by the webtrike-ui interface as a model specification. Example response/request body is an array of model specifications:
+* Returns an array of JSON objects representing the models that can be parameterized and submitted by the webtrike-ui interface as a model specification. 
 
+Example response/request body is an array of model specifications:
 	
 	[
 		{
@@ -178,7 +179,9 @@ POST model parameter specification (ie. any one of the model parameter specifica
 * Example URL: http://localhost:8000/webtrike/rcf/runs/
 * Http request method: GET to retrieve
 * JS modules that GET this object: [js/views/StatusView.js](module-views_StatusView.js) and [js/models/StatusList.js](module-models_StatusList.html), 
-* Returns an array of JSON objects describing the status the model run(s) that have been submitted. Example response body:
+* Returns an array of JSON objects describing the status the model run(s) that have been submitted. 
+
+Example response body:
 
 	[
 		{
@@ -206,7 +209,9 @@ POST model parameter specification (ie. any one of the model parameter specifica
 * Example URL: http://localhost:8000/webtrike/rcf/runs/19/ (retrieve info on run 19)
 * Http request method: GET
 * JS modules that GET this object: [js/views/ParamView.js](module-views_ParamView.html) and [js/models/Status.js](module-models_Status.html)
-* Returns a JSON object describing the parameters and status of the requested model run. Example response body:
+* Returns a JSON object describing the parameters and status of the requested model run. 
+
+Example response body:
 
 	{
 		"status": "error", 
