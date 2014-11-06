@@ -1,0 +1,1651 @@
+{
+
+    "get-login-user-privileges": {
+        "command" : "login-user-privileges",
+        "params" : {
+            "allow_manage-user" : "false",
+            "allow_manage-run-group" : "true",
+            "allow_edit-run-group" : "true",
+            "allow_edit-run" : "true",
+            "allow_save-preferences" : "true",
+            "allow_debug" : "false",
+            "allow_interactive" : "false",
+            "allow_gui-rotate-grid-wave" : "false",
+            "allow-wave" : "false",
+            "allow-ocean" : "true",
+            "allow-atmos" : "false",
+            "allow_modify-data" : "true",
+            "allow_modify-ocean-data" : "false",
+            "allow_modify-atmos-data" : "false",
+            "allow_modify-wave-data" : "false",
+            "allow_delete-group" : "false",
+            "allow_delete-all" : "false",
+            "allow_chat" : "false",
+            "allow_chat-group" : "false",
+            "allow_chat-all" : "false",
+            "allow_receive-chat" : "false",
+            "allow_monitor-chat" : "false",
+            "allow_monitor-presents" : "false",
+            "allow_ssh" : "false",
+            "allow_view-data" : "false",
+            "allow_gui-wave" : "false",
+            "allow_gui-ocean" : "true",
+            "allow_gui-atmos" : "false",
+            "allow_delete-run" : "true",
+            "allow_create-run" : "true",
+            "allow_extract-data" : "false",
+            "allow-templating" : "true",
+            "allow_interactive-hydro-level1" : "false",
+            "allow_only-atmos" : "true",
+            "allow_only-ocean" : "true",
+            "allow_interactive-hydro-level2" : "false",
+            "allow_interactive-hydro-level3" : "false",
+            "allow_selection-hydro" : "true",
+            "allow_edit-time" : "true",
+            "allow_grid-decouppling-atmos" : "false",
+            "allow_grid-decouppling-wave" : "false",
+            "allow_grid-decouppling" : "false",
+            "allow_manage-system" : "false",
+            "allow_view-run-user-specs" : "false",
+            "allow_view-run-specs" : "true",
+            "allow_stop-run" : "true",
+            "allow_stop-all" : "false",
+            "allow_selection-wave" : "true",
+            "allow_selection-atmos" : "true",
+            "allow_delete-multi" : "false",
+            "allow_comment" : "true",
+            "allow_comment_own" : "true",
+            "allow_comment_all" : "false",
+            "allow_delete-protect_all" : "true",
+            "allow_delete-protect_own" : "true",
+            "allow_selection-output" : "true",
+            "allow_selection-hydro-output" : "true",
+            "allow_selection-atmos-output" : "true",
+            "allow_selection-wave-output" : "true",
+            "allow_load-system" : "false",
+            "allow_only-wave" : "true",
+            "allow_workspace-ref" : "true",
+            "allow_workspace-read" : "true",
+            "allow_workspace-write" : "false",
+            "allow_workspace-exec" : "true",
+            "allow_forcing_selection" : "false",
+            "allow_gui-rotate-grid-atmos" : "false",
+            "allow_modify-parameter" : "true",
+            "allow_selection-model" : "true",
+            "allow_interactive-wind" : "false"
+        },
+        "subcommands" : [ {
+            "command" : "privilegeSet",
+            "params" : {
+                "name" : "operator",
+                "description" : "System operator privieleges.",
+                "id" : "1"
+            }
+        } ]
+    },
+    "get-server-time": {
+        "command" : "server-time",
+        "params" : {
+            "server-time" : "2012-11-07 03:56:14.647",
+            "server-difference" : "0.282"
+        }
+    },
+
+    "get-run-groups": {
+        "command" : "run-groups",
+        "subcommands" : [ {
+            "command" : "run-group",
+            "params" : {
+                "run-group-id" : "1",
+                "run-group-name" : "Perth (WA)",
+                "description" : "Perth region - Western Australia"
+            }
+        } ]
+    },
+
+    "get-login-user-preferences": {
+        "command" : "login-user-preferences",
+        "params" : {
+            "rsf-default-rungroup" : "Perth (WA)",
+            "rsf-poll-interval" : "10",
+            "rsf-hide-table-columns" : "",
+            "rsf-order-table-columns" : "run-group-name,run-name,status,priority,percent-complete,etc,start-time,stop-time,forecast-period",
+            "rsf-run-history-limit" : "864000",
+            "rsf-audio-alert-mute" : "true",
+            "rsf-minimum-audio-alert-limit" : "informational"
+        }
+    },
+
+
+    "get-run-groups": {
+        "command" : "run-groups",
+        "subcommands" : [ {
+            "command" : "run-group",
+            "params" : {
+                "run-group-id" : "1",
+                "run-group-name" : "Perth (WA)",
+                "description" : "Perth region - Western Australia"
+            }
+        } ]
+    },
+
+
+    "create-default-run": {
+        "command" : "default-run-created",
+        "subcommands" : [ {
+            "command" : "run-parameters",
+            "params" : {
+                "run-name" : "Fri Feb 22 03:03:19 GMT 2013",
+                "description" : "description of run",
+                "scheduling" : "immediate",
+                "scheduled-start-time" : "2013-02-22 03:03:19.783",
+                "priority" : "medium",
+                "auto-repeat" : "false",
+                "auto-repeat-interval" : "0.0",
+                "privileges" : "9223372036854775807",
+                "runId" : "-1",
+                "user_id" : "-1",
+                "runGroupId" : "-1",
+                "rapid-progression" : "false"
+            }
+        }, {
+            "command" : "model-parameters",
+            "params" : {
+                "model-type" : "ocean",
+                "default" : "false",
+                "name" : ""
+            },
+            "subcommands" : [ {
+                "command" : "SUBMODEL",
+                "params" : {
+                    "model-type" : "shoc_static",
+                    "default" : "false",
+                    "name" : "derwent_marvl",
+                    "base-date" : "2000-01-01 00:00 +00",
+                    "description" : "MARVL for the INFORMD region",
+                    "model" : "shoc_static",
+                    "fine_ratio" : "0.8",
+                    "coarse_ratio" : "0.2",
+                    "register_coarse-0" : "coarse/outputs/setas_nrt_all.nc",
+                    "register_fine-0" : "fine/outputs/storm_nrt_all.nc",
+                    "run_flags" : "-g",
+                    "__SET_NAME" : "derwent_marvl"
+                },
+                "subcommands" : [ {
+                    "command" : "run",
+                    "params" : {
+                        "base-date" : "2000-01-01 00:00 +00",
+                        "noutputs" : "5",
+                        "description" : "MARVL for the INFORMD region",
+                        "model" : "shoc_static",
+                        "fine_ratio" : "0.8",
+                        "coarse_ratio" : "0.2",
+                        "register_coarse-0" : "coarse/outputs/setas_nrt_all.nc",
+                        "register_fine-0" : "fine/outputs/storm_nrt_all.nc",
+                        "run_flags" : "-g"
+                    }
+                }, {
+                    "command" : "grid",
+                    "params" : {
+                        "type" : "geographic-rectangular",
+                        "x-origin" : "146.25",
+                        "y-origin" : "-44.0",
+                        "ni" : "35",
+                        "nj" : "45",
+                        "rotation" : "0.0",
+                        "dlambda" : "0.05",
+                        "dphi" : "0.05"
+                    }
+                }, {
+                    "command" : "simulation-period",
+                    "params" : {
+                        "spinup-time" : "4 days",
+                        "start-time" : "0 days",
+                        "stop-time" : "1 days"
+                    }
+                }, {
+                    "command" : "topography"
+                }, {
+                    "command" : "forcings",
+                    "params" : {
+                        "tidal-csr-orthoweights" : "tidal-model/csr-tidal-orthoweights",
+                        "tidal-csr-consts" : "tidal-model/csr-tidal-consts",
+                        "forcing-model-eta" : "eta",
+                        "forcing-model-temperature" : "temperature",
+                        "forcing-model-salinity" : "salinity",
+                        "forcing-model-velocity" : "velocity",
+                        "forcing-model-wind" : "pressure",
+                        "eta" : "?/?:<name,eta><unit,metrs><description,sea level elevation>",
+                        "temperature" : "?/?:<name,temp><unit,degC><description,water temperature>",
+                        "salinity" : "?/?:<name,salt><unit,PSU><description,water salinity>",
+                        "velocity" : "?/?:<name,u,v><unit,m/s><description,velocities of water currents>",
+                        "atmos" : "?/?:<name,wind_u,wind_v><unit,m/s><description,surface wind velocities>",
+                        "pressure" : "?/?:<name,mslp><unit,Pascal><description,Mean sea level atmospheric pressure>",
+                        "flow-0" : "",
+                        "flow-2" : "",
+                        "flow-1" : "",
+                        "forcingFine" : "local-ocean/shoc-fine:<wait-for-local,false>",
+                        "forcingCoarse" : "local-ocean/shoc-coarse:<wait-for-local,false>"
+                    }
+                }, {
+                    "command" : "map-0",
+                    "params" : {
+                        "TRACER0.data" : "eta,temperature,salinity",
+                        "TRACER1.data" : "eta,temperature,salinity",
+                        "WIND_TS" : "atmos",
+                        "PRESSURE" : "atmos",
+                        "PRECIPITATION" : "atmos",
+                        "AIRTEMP" : "atmos",
+                        "DEW_POINT" : "atmos",
+                        "CLOUD" : "atmos",
+                        "ETA_RELAXATION_FILE" : "eta",
+                        "BOUNDARY0.CUSTOM.u1" : "uv_to_u1,velocity",
+                        "BOUNDARY0.CUSTOM.u2" : "uv_to_u2,velocity",
+                        "BOUNDARY0.DATA" : "eta,temperature,salinity",
+                        "BOUNDARY1.CUSTOM.u2" : "uv_to_u2,velocity",
+                        "BOUNDARY1.CUSTOM.u1" : "uv_to_u1,velocity",
+                        "BOUNDARY1.DATA" : "eta,temperature,salinity",
+                        "BOUNDARY2.CUSTOM.u1" : "uv_to_u1,velocity",
+                        "BOUNDARY2.CUSTOM.u2" : "uv_to_u2,velocity",
+                        "BOUNDARY2.DATA" : "eta,temperature,salinity",
+                        "BOUNDARY3.U1_FLOW" : "flow-2",
+                        "BOUNDARY3.DATA" : "flow-2",
+                        "BOUNDARY4.U2_FLOW" : "flow-0",
+                        "BOUNDARY4.DATA" : "flow-0"
+                    }
+                }, {
+                    "command" : "map-1",
+                    "params" : {
+                        "WIND_TS" : "atmos",
+                        "PRESSURE" : "atmos",
+                        "PRECIPITATION" : "atmos",
+                        "AIRTEMP" : "atmos",
+                        "DEW_POINT" : "atmos",
+                        "CLOUD" : "atmos",
+                        "BOUNDARY1.U2_FLOW" : "flow-2",
+                        "BOUNDARY1.DATA" : "flow-2",
+                        "BOUNDARY2.U2_FLOW" : "flow-0",
+                        "BOUNDARY2.DATA" : "flow-0"
+                    }
+                }, {
+                    "command" : "outputs",
+                    "subcommands" : [ {
+                        "command" : "output",
+                        "params" : {
+                            "name" : "out_cf",
+                            "start" : "0 days",
+                            "stop" : "1 days",
+                            "interval" : "1 hour",
+                            "filetype" : "standard",
+                            "post_process" : "",
+                            "post_process_transfer" : "false"
+                        }
+                    }, {
+                        "command" : "output",
+                        "params" : {
+                            "name" : "out_std",
+                            "start" : "0 days",
+                            "stop" : "1 days",
+                            "interval" : "1 hour",
+                            "filetype" : "standard",
+                            "post_process" : "",
+                            "post_process_transfer" : "false"
+                        }
+                    }, {
+                        "command" : "output",
+                        "params" : {
+                            "name" : "out_std",
+                            "start" : "0 days",
+                            "stop" : "3 days",
+                            "interval" : "6 hour",
+                            "filetype" : "standard",
+                            "post_process" : "",
+                            "post_process_transfer" : "false"
+                        }
+                    }, {
+                        "command" : "output",
+                        "params" : {
+                            "name" : "out_std",
+                            "start" : "0 days",
+                            "stop" : "3 days",
+                            "interval" : "6 hour",
+                            "filetype" : "standard",
+                            "post_process" : "",
+                            "post_process_transfer" : "false"
+                        }
+                    }, {
+                        "command" : "output",
+                        "params" : {
+                            "name" : "out_std",
+                            "start" : "0 days",
+                            "stop" : "3 days",
+                            "interval" : "6 hour",
+                            "filetype" : "standard",
+                            "post_process" : "",
+                            "post_process_transfer" : "false"
+                        }
+                    } ]
+                } ]
+            } ]
+        }, {
+            "command" : "model-parameters",
+            "params" : {
+                "model-type" : "wave",
+                "default" : "false",
+                "name" : ""
+            }
+        } ]
+    },
+
+
+    "get-system-state": {
+        "command" : "system-state",
+        "params" : {
+            "system-time" : "2012-11-07 03:56:19.653"
+        },
+        "subcommands" : [ {
+            "command" : "run-summary-status",
+            "subcommands" : [ {
+                "command" : "run-summary",
+                "params" : {
+                    "run-id" : "1",
+                    "run-group-id" : "1",
+                    "run-name" : "07-11-2012 00",
+                    "priority" : "medium",
+                    "privileges" : "9223372036854775807",
+                    "simulation-start-time" : "2012-11-07 00:30:00",
+                    "simulation-stop-time" : "2012-11-08 00:30:00"
+                },
+                "subcommands" : [ {
+                    "command" : "status",
+                    "params" : {
+                        "is_scheduled" : "false",
+                        "auto_delete_protected" : "false"
+                    },
+                    "subcommands" : [ {
+                        "command" : "model-run-status",
+                        "params" : {
+                            "model-type" : "262146",
+                            "state" : "0",
+                            "workstate" : "-1",
+                            "percent-complete" : "0.0",
+                            "exec-id" : "1"
+                        }
+                    } ]
+                } ]
+            }, {
+                "command" : "run-summary",
+                "params" : {
+                    "run-id" : "2",
+                    "run-group-id" : "1",
+                    "run-name" : "07-11-2012 01",
+                    "priority" : "medium",
+                    "privileges" : "9223372036854775807",
+                    "simulation-start-time" : "2012-11-07 01:00:00",
+                    "simulation-stop-time" : "2012-11-10 01:00:00"
+                },
+                "subcommands" : [ {
+                    "command" : "status",
+                    "params" : {
+                        "is_scheduled" : "false",
+                        "auto_delete_protected" : "false"
+                    },
+                    "subcommands" : [ {
+                        "command" : "model-run-status",
+                        "params" : {
+                            "model-type" : "262145",
+                            "start-time" : "2012-11-07 01:12:35",
+                            "stop-time" : "2012-11-07 01:14:39",
+                            "state" : "3",
+                            "workstate" : "18",
+                            "percent-complete" : "100.0",
+                            "exec-id" : "1"
+                        },
+                        "subcommands" : [ {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "-0.04",
+                                    "maximum" : "0.07",
+                                    "mean" : "0.01",
+                                    "std-dev" : "0.02"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "-0.13",
+                                    "maximum" : "0.12",
+                                    "mean" : "0.01",
+                                    "std-dev" : "0.04"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "-0.12",
+                                    "maximum" : "0.18",
+                                    "mean" : "0.02",
+                                    "std-dev" : "0.06"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "-0.3",
+                                    "maximum" : "0.21",
+                                    "mean" : "-0.02",
+                                    "std-dev" : "0.08"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "-0.01",
+                                    "maximum" : "0.08",
+                                    "mean" : "0.03",
+                                    "std-dev" : "0.02"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "-0.18",
+                                    "maximum" : "0.09",
+                                    "mean" : "-0.01",
+                                    "std-dev" : "0.06"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "-0.27",
+                                    "maximum" : "0.15",
+                                    "mean" : "-0.02",
+                                    "std-dev" : "0.08"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params"
+                                : {
+                                    "level" : "0.0",
+                                    "minimum" : "-0.35",
+                                    "maximum" : "0.42",
+                                    "mean" : "0.05",
+                                    "std-dev" : "0.1"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "35.2",
+                                    "maximum" : "35.56",
+                                    "mean" : "35.43",
+                                    "std-dev" : "0.11"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "35.29",
+                                    "maximum" : "35.56",
+                                    "mean" : "35.45",
+                                    "std-dev" : "0.07"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "35.07",
+                                    "maximum" : "35.57",
+                                    "mean" : "35.33",
+                                    "std-dev" : "0.1"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "34.88",
+                                    "maximum" : "35.57",
+                                    "mean" : "35.05",
+                                    "std-dev" : "0.15"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Surface Elevation",
+                                "units" : "metre"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "minimum" : "-0.38",
+                                    "maximum" : "-0.04",
+                                    "mean" : "-0.22",
+                                    "std-dev" : "0.07"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "15.35",
+                                    "maximum" : "17.04",
+                                    "mean" : "16.42",
+                                    "std-dev" : "0.48"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "18.91",
+                                    "maximum" : "19.8",
+                                    "mean" : "19.35",
+                                    "std-dev" : "0.19"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "19.59",
+                                    "maximum" : "20.36",
+                                    "mean" : "20.03",
+                                    "std-dev" : "0.17"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "19.23",
+                                    "maximum" : "20.43",
+                                    "mean" : "19.81",
+                                    "std-dev" : "0.34"
+                                }
+                            } ]
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Finished, cleanup"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-velocity-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-salinity-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-temperature-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-eta-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Pushing output 'out_std' has been initiated."
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:38",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Pushing output 'out_cf' has been initiated."
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:12:35",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Started"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:12:35",
+                                "importance" : "significant",
+                                "theme" : "extract access_g_sfc",
+                                "text" : "Finished extraction of 'access_g_sfc' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:04:33",
+                                "importance" : "significant",
+                                "theme" : "extract velocity",
+                                "text" : "Finished extraction of 'velocity' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:04:01",
+                                "importance" : "significant",
+                                "theme" : "extract salinity",
+                                "text" : "Finished extraction of 'salinity' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:56",
+                                "importance" : "significant",
+                                "theme" : "extract temperature",
+                                "text" : "Finished extraction of 'temperature' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:45",
+                                "importance" : "significant",
+                                "theme" : "extract tidal-csr-consts",
+                                "text" : "Finished extraction of 'tidal-csr-consts' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:39",
+                                "importance" : "significant",
+                                "theme" : "extract tidal-csr-orthoweights",
+                                "text" : "Finished extraction of 'tidal-csr-orthoweights' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract eta",
+                                "text" : "Finished extraction of 'eta' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract bathymetry-aus",
+                                "text" : "Finished extraction of 'bathymetry-aus' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract coastline",
+                                "text" : "Finished extraction of 'coastline' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:27",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Initialising"
+                            }
+                        } ]
+                    } ]
+                } ]
+            } ]
+        }, {
+            "command" : "run-groups",
+            "subcommands" : [ {
+                "command" : "run-group",
+                "params" : {
+                    "run-group-id" : "1",
+                    "run-group-name" : "Perth (WA)",
+                    "description" : "Perth region - Western Australia"
+                }
+            } ]
+        }, {
+            "command" : "system-messages"
+        } ]
+    },
+
+
+    "get-data-preferences": {
+        "command" : "data-preferences",
+        "params" : {
+            "laps" : "global-atmos/laps:<update-freq,24><wait-interval,6><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><translate,temp,air_temp><extract,gasp2shoc><aggregate,gasp_wind.nc><wait-for-local,false>",
+            "gasp" : "global-atmos/gasp:<update-freq,24><wait-interval,6><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><translate,temp,air_temp><extract,gasp2shoc><aggregate,gasp_wind.nc><wait-for-local,false>",
+            "GHRSST" : "global-ocean/sst",
+            "OceanMapsCC" : "global-ocean/brt_anal:<update-freq,24><wait-interval,6>&nrt_anal:<update-freq,24><wait-interval,6>&ofam:<update-freq,72><wait-interval,6><request-types,eta,salt,temp>",
+            "OceanMapsCC_FC" : "global-ocean/ofam:<update-freq,72><wait-interval,6><request-types,eta,salt,temp>",
+            "OceanMapsCC_BRT" : "global-ocean/brt_anal:<update-freq,24><wait-interval,6><request-types,eta,salt,temp>",
+            "OceanMapsCC_NRT" : "global-ocean/nrt_anal:<update-freq,24><wait-interval,6><request-types,eta,salt,temp>",
+            "OceanMapsCF" : "global-ocean/ofam:<update-freq,72><wait-interval,6>&brt_anal:<update-freq,24><wait-interval,6>&nrt_anal:<update-freq,24><wait-interval,6><request-types,u,v>",
+            "OceanMapsCF_FC" : "global-ocean/ofam:<update-freq,72><wait-interval,6><request-types,u,v>",
+            "OceanMapsCF_BRT" : "global-ocean/brt_anal:<update-freq,24><wait-interval,6><request-types,u,v>",
+            "OceanMapsCF_NRT" : "global-ocean/nrt_anal:<update-freq,24><wait-interval,6><request-types,u,v>",
+            "WAM" : "global-ocean/wam-regional:<request-types,sig_wav_ht,sig_wav_dir,wnd_spd,wnd_dir,mn_wav_per,peak_wav_per>",
+            "AusWAM" : "global-ocean/wam-aus-meso:<request-types,sig_wav_ht,sig_wav_dir,wnd_spd,wnd_dir,mn_wav_per,peak_wav_per>"
+        }
+    },
+
+
+
+    "get-rough-runtime-estimate": {
+        "command" : "rough-runtime-estimate",
+        "params" : {
+            "error-type" : "failure",
+            "message" : "The 17039361/262144 model execution manager does not exist."
+        },
+        "subcommands" : [ {
+            "command" : "error",
+            "params" : {
+                "error-type" : "failure",
+                "message" : "The 17039361/262144 model execution manager does not exist."
+            }
+        } ]
+    },
+
+
+    "submit-run": {
+        "command" : "run-submitted",
+        "params" : {
+            "run-id" : "3"
+        }
+    },
+
+
+    "get-system-state": {
+        "command" : "system-state",
+        "params" : {
+            "system-time" : "2012-11-07 03:56:41.227"
+        },
+        "subcommands" : [ {
+            "command" : "run-summary-status",
+            "subcommands" : [ {
+                "command" : "run-summary",
+                "params" : {
+                    "run-id" : "1",
+                    "run-group-id" : "1",
+                    "run-name" : "07-11-2012 00",
+                    "priority" : "medium",
+                    "privileges" : "9223372036854775807",
+                    "simulation-start-time" : "2012-11-07 00:30:00",
+                    "simulation-stop-time" : "2012-11-08 00:30:00"
+                },
+                "subcommands" : [ {
+                    "command" : "status",
+                    "params" : {
+                        "is_scheduled" : "false",
+                        "auto_delete_protected" : "false"
+                    },
+                    "subcommands" : [ {
+                        "command" : "model-run-status",
+                        "params" : {
+                            "model-type" : "262146",
+                            "state" : "0",
+                            "workstate" : "-1",
+                            "percent-complete" : "0.0",
+                            "exec-id" : "1"
+                        }
+                    } ]
+                } ]
+            }, {
+                "command" : "run-summary",
+                "params" : {
+                    "run-id" : "2",
+                    "run-group-id" : "1",
+                    "run-name" : "07-11-2012 01",
+                    "priority" : "medium",
+                    "privileges" : "9223372036854775807",
+                    "simulation-start-time" : "2012-11-07 01:00:00",
+                    "simulation-stop-time" : "2012-11-10 01:00:00"
+                },
+                "subcommands" : [ {
+                    "command" : "status",
+                    "params" : {
+                        "is_scheduled" : "false",
+                        "auto_delete_protected" : "false"
+                    },
+                    "subcommands" : [ {
+                        "command" : "model-run-status",
+                        "params" : {
+                            "model-type" : "262145",
+                            "start-time" : "2012-11-07 01:12:35",
+                            "stop-time" : "2012-11-07 01:14:39",
+                            "state" : "3",
+                            "workstate" : "18",
+                            "percent-complete" : "100.0",
+                            "exec-id" : "1"
+                        },
+                        "subcommands" : [ {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "-0.04",
+                                    "maximum" : "0.07",
+                                    "mean" : "0.01",
+                                    "std-dev" : "0.02"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "-0.13",
+                                    "maximum" : "0.12",
+                                    "mean" : "0.01",
+                                    "std-dev" : "0.04"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "-0.12",
+                                    "maximum" : "0.18",
+                                    "mean" : "0.02",
+                                    "std-dev" : "0.06"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "I component of current at left face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "-0.3",
+                                    "maximum" : "0.21",
+                                    "mean" : "-0.02",
+                                    "std-dev" : "0.08"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "-0.01",
+                                    "maximum" : "0.08",
+                                    "mean" : "0.03",
+                                    "std-dev" : "0.02"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "-0.18",
+                                    "maximum" : "0.09",
+                                    "mean" : "-0.01",
+                                    "std-dev" : "0.06"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "-0.27",
+                                    "maximum" : "0.15",
+                                    "mean" : "-0.02",
+                                    "std-dev" : "0.08"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "J component of current at back face",
+                                "units" : "metre second-1"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params"
+                                : {
+                                    "level" : "0.0",
+                                    "minimum" : "-0.35",
+                                    "maximum" : "0.42",
+                                    "mean" : "0.05",
+                                    "std-dev" : "0.1"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "35.2",
+                                    "maximum" : "35.56",
+                                    "mean" : "35.43",
+                                    "std-dev" : "0.11"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "35.29",
+                                    "maximum" : "35.56",
+                                    "mean" : "35.45",
+                                    "std-dev" : "0.07"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "35.07",
+                                    "maximum" : "35.57",
+                                    "mean" : "35.33",
+                                    "std-dev" : "0.1"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Salinity",
+                                "units" : "PSU"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "34.88",
+                                    "maximum" : "35.57",
+                                    "mean" : "35.05",
+                                    "std-dev" : "0.15"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Surface Elevation",
+                                "units" : "metre"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "minimum" : "-0.38",
+                                    "maximum" : "-0.04",
+                                    "mean" : "-0.22",
+                                    "std-dev" : "0.07"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-250.0",
+                                    "minimum" : "15.35",
+                                    "maximum" : "17.04",
+                                    "mean" : "16.42",
+                                    "std-dev" : "0.48"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-100.0",
+                                    "minimum" : "18.91",
+                                    "maximum" : "19.8",
+                                    "mean" : "19.35",
+                                    "std-dev" : "0.19"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "-50.0",
+                                    "minimum" : "19.59",
+                                    "maximum" : "20.36",
+                                    "mean" : "20.03",
+                                    "std-dev" : "0.17"
+                                }
+                            } ]
+                        }, {
+                            "command" : "result-statistics",
+                            "params" : {
+                                "variable" : "Temperature",
+                                "units" : "degrees C"
+                            },
+                            "subcommands" : [ {
+                                "command" : "statistics",
+                                "params" : {
+                                    "level" : "0.0",
+                                    "minimum" : "19.23",
+                                    "maximum" : "20.43",
+                                    "mean" : "19.81",
+                                    "std-dev" : "0.34"
+                                }
+                            } ]
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Finished, cleanup"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-velocity-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-salinity-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-temperature-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "run",
+                                "text" : "Pushing forcing data initialised for: runID2_FORCING_shoc-eta-0.nc"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:39",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Pushing output 'out_std' has been initiated."
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:14:38",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Pushing output 'out_cf' has been initiated."
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:12:35",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Started"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:12:35",
+                                "importance" : "significant",
+                                "theme" : "extract access_g_sfc",
+                                "text" : "Finished extraction of 'access_g_sfc' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:04:33",
+                                "importance" : "significant",
+                                "theme" : "extract velocity",
+                                "text" : "Finished extraction of 'velocity' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:04:01",
+                                "importance" : "significant",
+                                "theme" : "extract salinity",
+                                "text" : "Finished extraction of 'salinity' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:56",
+                                "importance" : "significant",
+                                "theme" : "extract temperature",
+                                "text" : "Finished extraction of 'temperature' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:45",
+                                "importance" : "significant",
+                                "theme" : "extract tidal-csr-consts",
+                                "text" : "Finished extraction of 'tidal-csr-consts' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:39",
+                                "importance" : "significant",
+                                "theme" : "extract tidal-csr-orthoweights",
+                                "text" : "Finished extraction of 'tidal-csr-orthoweights' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract eta",
+                                "text" : "Finished extraction of 'eta' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract bathymetry-aus",
+                                "text" : "Finished extraction of 'bathymetry-aus' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:33",
+                                "importance" : "significant",
+                                "theme" : "extract coastline",
+                                "text" : "Finished extraction of 'coastline' dataset"
+                            }
+                        }, {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 01:03:27",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Initialising"
+                            }
+                        } ]
+                    } ]
+                } ]
+            }, {
+                "command" : "run-summary",
+                "params" : {
+                    "run-id" : "3",
+                    "run-group-id" : "1",
+                    "run-name" : "07-11-2012 03",
+                    "priority" : "medium",
+                    "privileges" : "9223372036854775807",
+                    "simulation-start-time" : "2012-11-07 03:30:00",
+                    "simulation-stop-time" : "2012-11-08 03:30:00"
+                },
+                "subcommands" : [ {
+                    "command" : "status",
+                    "params" : {
+                        "is_scheduled" : "false",
+                        "auto_delete_protected" : "false"
+                    },
+                    "subcommands" : [ {
+                        "command" : "model-run-status",
+                        "params" : {
+                            "model-type" : "262145",
+                            "state" : "8",
+                            "workstate" : "12",
+                            "percent-complete" : "0.0",
+                            "etc" : "0.0",
+                            "exec-id" : "2"
+                        },
+                        "subcommands" : [ {
+                            "command" : "message",
+                            "params" : {
+                                "time" : "2012-11-07 03:56:41.082",
+                                "importance" : "significant",
+                                "theme" : "istate",
+                                "text" : "Initialising"
+                            }
+                        } ]
+                    } ]
+                } ]
+            } ]
+        }, {
+            "command" : "selected-run-details",
+            "params" : {
+                "run-id" : "1",
+                "run-group-id" : "1"
+            },
+            "subcommands" : [ {
+                "command" : "run",
+                "subcommands" : [ {
+                    "command" : "run-parameters",
+                    "params" : {
+                        "run-name" : "07-11-2012 00",
+                        "description" : "description of run",
+                        "scheduling" : "immediate",
+                        "scheduled-start-time" : "2012-11-07 00:30:39",
+                        "priority" : "medium",
+                        "auto-repeat" : "false",
+                        "auto-repeat-interval" : "0.0",
+                        "privileges" : "9223372036854775807",
+                        "runId" : "1",
+                        "user_id" : "6",
+                        "runGroupId" : "1",
+                        "rapid-progression" : "false"
+                    }
+                }, {
+                    "command" : "model-parameters",
+                    "params" : {
+                        "model-type" : "bodas",
+                        "default" : "false",
+                        "name" : "bodas",
+                        "__SET_NAME" : "bodas",
+                        "model" : "bodas",
+                        "base-date" : "2012-11-07 00:30:00",
+                        "description" : "Bodas-SHOC, observations assimilating model combination",
+                        "parentRunID" : "1"
+                    },
+                    "subcommands" : [ {
+                        "command" : "grid",
+                        "params" : {
+                            "type" : "geographic-rectangular",
+                            "x-origin" : "114.837",
+                            "y-origin" : "-32.721",
+                            "ni" : "17",
+                            "nj" : "18",
+                            "rotation" : "0.0",
+                            "dlambda" : "0.050362033646109236",
+                            "dphi" : "0.050362033646109236",
+                            "dx" : "5600.0",
+                            "dy" : "5600.0"
+                        }
+                    }, {
+                        "command" : "simulation-period",
+                        "params" : {
+                            "spinup-time" : "4 days",
+                            "start-time" : "0 days",
+                            "stop-time" : "1 day",
+                            "etc" : "0.0"
+                        }
+                    }, {
+                        "command" : "topography",
+                        "params" : {
+                            "coastline" : "coastline/shoc-coastline",
+                            "forcing-model-bathymetry" : "bathymetry-aus",
+                            "bathymetry-aus" : "bathymetry/shoc-aus-bathymetry",
+                            "bathymetry-global" : "bathymetry/shoc-global-bathy-gebco",
+                            "forcing-geoextent-bathymetry-aus" : "[x=90,y=-60,w=88,h=70]",
+                            "alternate-forcing-bathymetry-aus" : "bathymetry-global",
+                            "ofam-grid" : "bathymetry/ofam-bathymetry"
+                        }
+                    }, {
+                        "command" : "forcings",
+                        "params" : {
+                            "forcing-model-pressure" : "access_a_sfc",
+                            "forcing-model-wind" : "access_a_sfc",
+                            "wind-laps" : "global-atmos/laps:<update-freq,24><wait-interval,6><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><extract,gasp2shoc><aggregate,laps_wind.nc><wait-for-local,false><pushFTP,true>",
+                            "pressure-laps" : "global-atmos/laps:<update-freq,24><wait-interval,6><translate,pressure,sfc_pres><extract,gasp2shoc><aggregate,laps_pressure.nc><wait-for-local,false><pushFTP,true>",
+                            "wind-gasp" : "global-atmos/gasp:<update-freq,24><wait-interval,6><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><extract,gasp2shoc><aggregate,gasp_wind.nc><wait-for-local,false><pushFTP,true>",
+                            "pressure-gasp" : "global-atmos/gasp:<update-freq,24><wait-interval,6><translate,pressure,sfc_pres><extract,gasp2shoc><aggregate,gasp_pressure.nc><wait-for-local,false><pushFTP,true>",
+                            "forcing-geoextent-pressure-laps" : "[x=65,y=-65,w=119.625,h=82.125]",
+                            "forcing-timeextent-pressure-laps" : "[0,3]",
+                            "forcing-timeextent-pressure-gasp" : "[0,7]",
+                            "alternate-forcing-presssure-laps" : "pressure-gasp",
+                            "forcing-geoextent-wind-laps" : "[x=65,y=-65,w=119.625,h=82.125]",
+                            "forcing-timeextent-wind-laps" : "[0,3]",
+                            "forcing-timeextent-wind-gasp" : "[0,7]",
+                            "forcing-offset-pressure-laps" : "3",
+                            "forcing-offset-pressure-gasp" : "6",
+                            "forcing-offset-wind-laps" : "3",
+                            "forcing-offset-wind-gasp" : "6",
+                            "forcing-model-salinity" : "salinity_ofam",
+                            "forcing-model-temperature" : "temperature_ofam",
+                            "forcing-model-eta" : "eta_ofam",
+                            "forcing-model-velocity" : "velocity_ofam",
+                            "forcing-model-heatflux" : "",
+                            "forcing-model-swr" : "",
+                            "forcing-model-tidal" : "tidal-csr-orthoweights&tidal-csr-consts",
+                            "tidal-csr-orthoweights" : "tidal-model/csr-tidal-orthoweights",
+                            "tidal-csr-consts" : "tidal-model/csr-tidal-consts",
+                            "eta_ofam" : "global-ocean/ofam2-an:<update-freq,24><wait-interval,6><precedence,10>&ofam2-nrt:<update-freq,24><wait-interval,6><precedence,20>&ofam2-fc:<reference,true><update-freq,24><wait-interval,6><precedence,30><translate,eta,eta_t><pushFTP,true>",
+                            "temperature_ofam" : "global-ocean/ofam2-an:<update-freq,24><wait-interval,6><precedence,10>&ofam2-nrt:<update-freq,24><wait-interval,6><precedence,20>&ofam2-fc:<reference,true><update-freq,24><wait-interval,6><precedence,30><pushFTP,true>",
+                            "salinity_ofam" : "global-ocean/ofam2-an:<update-freq,24><wait-interval,6><precedence,10>&ofam2-nrt:<update-freq,24><wait-interval,6><precedence,20>&ofam2-fc:<reference,true><update-freq,24><wait-interval,6><precedence,30><pushFTP,true>",
+                            "velocity_ofam" : "global-ocean/ofam2-an:<update-freq,24><wait-interval,6><precedence,10>&ofam2-nrt:<update-freq,24><wait-interval,6><precedence,20>&ofam2-fc:<reference,true><update-freq,24><wait-interval,6><precedence,30><wait-for-local,false><pushFTP,true>",
+                            "access_a_sfc" : "global-atmos/access-a-surface:<update-freq,6><wait-interval,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                            "access_r_sfc" : "global-atmos/access-r-surface:<update-freq,12><wait-interval,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                            "access_t_sfc" : "global-atmos/access-t-surface:<update-freq,12><wait-interval,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                            "access_g_sfc" : "global-atmos/access-g-surface:<update-freq,12><wait-interval,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                            "forcing-geoextent-access_a_sfc" : "[x=97.5,y=-52.5,w=72.19,h=57.23]",
+                            "forcing-geoextent-access_r_sfc" : "[x=67.5,y=-62.5,w=119.375,h=79.625]",
+                            "forcing-geoextent-access_t_sfc" : "[x=62.5,y=-42.5,w=154.625,h=198.975]",
+                            "forcing-timeextent-access_a_sfc" : "[0,1.5]",
+                            "forcing-timeextent-access_r_sfc" : "[0,2.5]",
+                            "forcing-timeextent-access_t_sfc" : "[0,2.5]",
+                            "forcing-timeextent-access_g_sfc" : "[0,9]",
+                            "forcing-offset-access_g_sfc" : "3",
+                            "forcing-offset-access_a_sfc" : "1",
+                            "forcing-offset-access_r_sfc" : "1",
+                            "forcing-offset-access_t_sfc" : "1",
+                            "alternate-forcing-access_a_sfc" : "access_r_sfc",
+                            "alternate-forcing-access_r_sfc" : "access_t_sfc",
+                            "alternate-forcing-access_t_sfc" : "access_g_sfc",
+                            "sst" : "global-ocean/amsre-sst:<pushFTP,false><extract,link,root><name,AMSRE>",
+                            "bodas-ensemble" : "statistics/bodas-ensembleV1:<pushFTP,false><extract,link>",
+                            "profiles" : "ocean-obs/mmt_qc:<pushFTP,false><extract,link,root><name,BOM>"
+                        }
+                    }, {
+                        "command" : "outputs",
+                        "subcommands" : [ {
+                            "command" : "output",
+                            "params" : {
+                                "name" : "out_cf",
+                                "start" : "0 days",
+                                "stop" : "3 days",
+                                "interval" : "1 hour",
+                                "filetype" : "simple_cf",
+                                "post_process" : "statistics",
+                                "post_process_transfer" : "false",
+                                "variables" : "salt temp wind_u wind_v u v eta dens Kz sound",
+                                "enabled" : "true"
+                            }
+                        }, {
+                            "command" : "output",
+                            "params" : {
+                                "name" : "out_std",
+                                "start" : "0 days",
+                                "stop" : "3 days",
+                                "interval" : "6 hour",
+                                "filetype" : "standard",
+                                "post_process" : "acoustics,statistics",
+                                "post_process_transfer" : "false",
+                                "enabled" : "true"
+                            }
+                        }, {
+                            "command" : "output",
+                            "params" : {
+                                "name" : "thales_cf",
+                                "start" : "0 days",
+                                "stop" : "3 days",
+                                "interval" : "1 hour",
+                                "filetype" : "simple_cf",
+                                "post_process" : "",
+                                "post_process_transfer" : "false",
+                                "variables" : "salt temp wind_u wind_v u v eta dens Kz sound",
+                                "enabled" : "false"
+                            }
+                        }, {
+                            "command" : "output",
+                            "params" : {
+                                "name" : "out_std_surf",
+                                "start" : "-4 days",
+                                "stop" : "3 days",
+                                "interval" : "1 hour",
+                                "filetype" : "standard",
+                                "post_process" : "",
+                                "post_process_transfer" : "false",
+                                "variables" : "ALL",
+                                "enabled" : "false"
+                            }
+                        } ]
+                    } ]
+                } ]
+            }, {
+                "command" : "status",
+                "params" : {
+                    "is_scheduled" : "false",
+                    "auto_delete_protected" : "false"
+                },
+                "subcommands" : [ {
+                    "command" : "model-run-status",
+                    "params" : {
+                        "model-type" : "262146",
+                        "state" : "0",
+                        "workstate" : "-1",
+                        "percent-complete" : "0.0",
+                        "exec-id" : "1"
+                    }
+                } ]
+            } ]
+        }, {
+            "command" : "run-groups",
+            "subcommands" : [ {
+                "command" : "run-group",
+                "params" : {
+                    "run-group-id" : "1",
+                    "run-group-name" : "Perth (WA)",
+                    "description" : "Perth region - Western Australia"
+                }
+            } ]
+        }, {
+            "command" : "system-messages",
+            "subcommands" : [ {
+                "command" : "message",
+                "params" : {
+                    "message" : "Run  '07-11-2012 03' [3]: shoc model started.",
+                    "id" : "5",
+                    "time" : "1352260601092",
+                    "importance" : "minor",
+                    "theme" : "system",
+                    "userData" : "1",
+                    "type" : "1"
+                }
+            }, {
+                "command" : "message",
+                "params" : {
+                    "message" : "Run  '07-11-2012 03': shoc model preparation started.",
+                    "id" : "4",
+                    "time" : "1352260601084",
+                    "importance" : "minor",
+                    "theme" : "system",
+                    "userData" : "1",
+                    "type" : "1"
+                }
+            }, {
+                "command" : "message",
+                "params" : {
+                    "message" : "Run '07-11-2012 03' has been created. [3]",
+                    "id" : "3",
+                    "time" : "1352260600724",
+                    "importance" : "significant",
+                    "theme" : "system",
+                    "userData" : "1",
+                    "type" : "1"
+                }
+            } ]
+        } ]
+    }
+}

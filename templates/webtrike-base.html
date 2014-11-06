@@ -1,0 +1,39 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title %}webMARVL: The MARine Virtual Laboratory{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="static/webtrike/css/DT_bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="static/webtrike/css/bootstrap-modal.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/daterangepicker-bs2.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/jquery-ui.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/openlayers/style.css" rel="stylesheet" type="text/css">
+  <link href="static/webtrike/css/webmarvl.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+ <img src="static/webtrike/img/ajax-loader.gif" id="loading-indicator" class="hide loadingIndicator"/>
+ <div id="mainView" class="container-fluid">
+  {% csrf_token %}
+
+  {% block content %}
+
+  {% endblock %}
+
+ </div>
+
+</body>
+</html>

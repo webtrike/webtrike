@@ -1,0 +1,158 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="btn-group span2">
+      <a class="btn dropdown-toggle blocker" data-toggle="dropdown" href="#">Status Columns <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk0" class="statusCheck" disabled checked> Run ID</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk1" class="statusCheck" disabled checked> Run Name</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk2" class="statusCheck" disabled checked> Parameters</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk3" class="statusCheck" disabled checked> Model Name</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk4" class="statusCheck" checked> Run Start</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk5" class="statusCheck" checked> Run Stop</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk6" class="statusCheck" checked> Model Start</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk7" class="statusCheck" checked> Model Stop</label>
+        </li>
+        <li>
+          <label>&nbsp;<input type="checkbox" name="chk9" class="statusCheck" disabled checked> Status</label>
+        </li>
+      </ul>
+    </div>
+    <a href="#" role="button" class="selectAll btn span2 blocker">Select All</a>
+    <a href="#" role="button" class="unselectAll btn span2 blocker">Unselect All</a>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="refreshStatus" style="float:left;">
+      <a href="#"><i class="icon-refresh"> </i></a>
+    </div>
+    <div class="refreshStatus" style="float:right;">
+      <a href="#"><i class="icon-refresh"> </i></a>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <table id="statusTable" class="table table-condensed">
+	      <thead>
+  	      <tr>
+			      <th>Run ID</th>
+			      <th>Run Name</th>
+            <th> </th>
+			      <th>Model Name</th>
+			      <th>Run Start</th>
+			      <th>Run Stop</th>
+			      <th>Model Start</th>
+			      <th>Model Stop</th>
+            <th>Status</th>
+            <th> </th>
+		      </tr>
+	      </thead>
+	      <tbody>
+		      {{#each run}}
+			      <tr class="no_selection">
+				      <td class="runid statusColumn" width="6%">{{id}}</td>
+				      <td class="name statusColumn">{{name}}</td>
+              <td class="params">
+                <a href="#" class="blocker" data-placement="right" data-toggle="clickover" data-getrun="{{id}}" data-title="Model Parameters for Run {{id}}"><i class="icon-info-sign"> </i></a>
+              </td>
+				      <td class="modelname statusColumn">{{modelname}}</td>
+				      <td class="modelstarttime statusColumn">{{modelstart}}</td>
+				      <td class="modelstoptime statusColumn">{{modelstop}}</td>
+				      <td class="starttime statusColumn">{{start}}</td>
+				      <td class="stoptime statusColumn">{{stop}}</td>
+				      <td class="status" style="text-align:center;">
+                {{#inProgress message}}
+					      	<div data-placement="left" class="progress progress-striped" style="margin-bottom: 2px;">
+						        <div class="bar" style="width:{{percent}}%;">
+                    </div>
+                      {{#showPercent percent}}
+                        <span class="progressspan">{{percent}}</span>
+                      {{/showPercent}}
+									</div>
+                {{else}}
+                  <span>
+                  	<a href="#" role="button" class="btn btn-small {{cssbutton}} downloadButton blocker" style="text-transform:capitalize;" data-id="{{id}}">{{message}}</a>
+                  </span>
+                {{/inProgress}}
+              </td>
+              <td>
+                {{#if messages}}
+					        <div data-placement="left" data-toggle="popover" data-trigger="hover" data-div-id="{{id}}messagepopover">
+                  	<a href="#{{id}}messagemodal" class="blocker" data-toggle="modal"><i class="icon-list"> </i></a>
+                  	<div class="modal hide fade" id="{{id}}messagemodal">
+                    	<div class="modal-header">
+                       	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                       	<h3>Messages for Run {{id}}</h3>
+                    	</div>
+                    	<div class="modal-body">
+                      	<table class="table table-condensed">
+                        	<thead>
+                          	<tr>
+                            	<th>Time</th>
+                            	<th>Message</th>
+                          	</tr>
+                        	</thead>
+                        	<tbody>
+                          	{{#each messages}}
+                            	<tr>
+                              	<td width="20%">{{time}}</td>
+                              	<td width="80%">{{text}}</td>
+                            	</tr>
+                          	{{/each}}
+                        	</tbody>
+                      	</table>
+                    	</div>
+                    </div>
+                  </div>
+                  <div class="hide" data-div="{{id}}messagepopover">
+                    <table class="table table-condensed">
+                      <thead>
+                        <tr>
+                          <th>Time</th>
+                          <th>Message</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#list messages}}
+                          <tr>
+                            <td width="20%">{{time}}</td>
+                            <td width="80%">{{text}}</td>
+                          </tr>
+                        {{/list}}
+                      </tbody>
+                    </table>
+                  </div>
+                {{/if}}
+              </td>
+			      </tr>
+		      {{/each}}
+	      </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="refreshStatus" style="float:left;">
+      <a href="#"><i class="icon-refresh"> </i></a>
+    </div>
+    <div class="refreshStatus" style="float:right;">
+      <a href="#"><i class="icon-refresh"> </i></a>
+    </div>
+  </div>
+</div>

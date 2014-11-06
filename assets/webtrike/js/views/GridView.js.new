@@ -1,0 +1,548 @@
+define(['backbone', 'underscore', 'openlayers', 'proj4', 'hb!tpl/GridView.hbs',
+ 'hb!tpl/GridViewRectangular.hbs', 'bootstrapxclickover' ],
+function(Backbone, _, OpenLayers, Proj4js, geographicTemplate, rectangularTemplate) {
+
+ var GridView = Backbone.View.extend({
+ 	template: geographicTemplate,
+	tagName : 'div',
+	mapEl: '#map', // see the GridView template - this is where the OL map goes
+	initialize : function () {
+		'use strict';
+    _.bindAll(this, 'render', 'updateModel', 'onModelChange');                                   
+    OpenLayers.ProxyHost = "http://plaja-hf.hba.marine.csiro.au/cgi-bin/proxy.cgi?url=";
+
+		// Create the openlayers map we will use
+		this.createMap();
+	},        
+	events: {
+		'click .gridaction': 'updateGridFromInputs',
+    'keyup .edit': 'disableOLTransformFeature',
+    'click .forcingCheck': 'clickForcingCheck'
+	},
+
+  // disableOLTransformFeature: helper to disable OL transform feature until
+  // manually entered grid changes complete
+  disableOLTransformFeature: function() {
+    'use strict';
+    this.control.deactivate();
+    $('.gridaction').removeAttr('disabled');
+  },
+
+	// onModelChange: 
+  onModelChange: function() {
+		'use strict';
+		if (this.model.getSelectedIndex() >= 0) {
+     	var region = this.model.getSelectedItem().getRegion(),
+		      grid = this.model.getSelectedItem().get('grid');
+
+      var projection = grid['projection-proj4'];
+      if (!projection) {
+        this.proj = "EPSG:4326";
+      } else {
+        if (projection.indexOf("stere") > 0) projection = projection.replace("stere", "sterea");
+        Proj4js.defs["EPSG:UWE"] = projection;
+        this.proj = "EPSG:UWE";
+      }
+      this.oproj = new OpenLayers.Projection(this.proj);
+      this.map.displayProjection = this.oproj;
+
+      // add a mouseposition control to display coords at lower left of map
+      this.map.addControl(
+        new OpenLayers.Control.MousePosition({
+          displayProjection: this.proj,
+          separator: ' | ',
+          numDigits: 2
+        })
+      );
+
+      // if the projection is not EPSG:4326 then display longs, lats
+      var that = this;
+      this.map.events.register("mousemove", this.map, function(e) {
+        var position = this.getLonLatFromPixel(e.xy).transform(this.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+        OpenLayers.Util.getElement("coords").innerHTML = "<label>Lon: " + position.lon.toFixed(4) + " | Lat: " + position.lat.toFixed(4) + "</label>";
+      });
+
+      // set the grid extent up as a transform control on the map
+			this.setRegion(region, true);
+
+		}
+	},
+
+  // Called to set the region that will be used to display the current grid 
+  // extent
+	setRegion: function(region, updateTransOrigin) {
+		'use strict';
+   	region.polygon.transform(this.oproj, this.map.getProjectionObject());
+    // rotate the bounds as sometimes the polygon isn't quite rectangular
+    region.polygon = region.polygon.getBounds().toGeometry();
+		region.polygon.rotate(region.options.rotation, region.polygon.getCentroid());
+  	var feature = new OpenLayers.Feature.Vector(region.polygon);
+   	this.control.unsetFeature();
+   	this.vectorLayer.removeAllFeatures();
+   	this.vectorLayer.addFeatures([feature]);
+
+    if (this.gridLayer) {
+   	  this.gridLayer.removeAllFeatures();
+    } else {
+      this.gridLayer = new OpenLayers.Layer.Vector("Grid Points", {
+        isBaseLayer: false,
+        displayInLayerSwitcher: true
+      });
+      var pointStyle = {
+                strokeColor: "black",
+                strokeOpacity: 1,
+                strokeWidth: 4,
+                fillColor: "red",
+                fillOpacity: 0.2,
+                pointRadius: 20
+      };
+      this.gridLayer.style = pointStyle;
+      this.map.addLayer(this.gridLayer);
+    }
+
+    var origin = region.polygon.components[0].components[0].clone();
+    var right = region.polygon.components[0].components[1].clone();
+    var up = region.polygon.components[0].components[3].clone();
+    var dx = origin.distanceTo(right) / region.options.dx;
+    var dy = origin.distanceTo(up) / region.options.dy;
+    var pointGrid = new OpenLayers.Geometry.MultiPoint();
+    for (var i = 0; i < region.options.dx; i++) {
+      var xc = origin.x + (i * dx);
+      for (var j = 0; j < region.options.dy; j++) {
+        pointGrid.addPoint(new OpenLayers.Geometry.Point(xc, origin.y + (j * dy))); 
+      }
+    }
+    console.log("PG: "+origin.x+" "+origin.y+" "+dx+","+dy+" from "+origin+" right: "+right+" up: "+up+" distance right: "+origin.distanceTo(right)+" up: "+origin.distanceTo(up)+" "+pointGrid.getBounds());
+    this.gridLayer.addFeatures(pointGrid);
+    this.gridLayer.redraw();
+
+   	this.map.setCenter(region.polygon.getCentroid());
+   	this.map.zoomToExtent(region.polygon.getBounds());
+   	// Note, this has to come last because of how OL calculates map size:
+   	this.control.setFeature(feature, region.options);
+
+    // set initial values of transformed origin in EPSG:4326
+    if (updateTransOrigin) {
+      var transOrig = region.polygon.components[0].components[0].clone();
+      transOrig.transform(this.map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+      this.setTransOrig(transOrig.x, transOrig.y);
+    }
+  },
+
+  // Called to set the translated origin as an input fields
+  setTransOrig: function(x,y) {
+    // set place holders for transformed origin
+    $('#x-transOrigin').val(x.toFixed(4));
+    $('#x-transOrigin').prop('defaultValue', x.toFixed(4));
+    $('#y-transOrigin').val(y.toFixed(4));
+    $('#y-transOrigin').prop('defaultValue', y.toFixed(4));
+  },
+
+  // Called when the user checks one of the forcing datasets
+	clickForcingCheck: function(ev) {
+    'use strict';
+   
+		var forcing = $(ev.currentTarget).attr('data-id'),
+        checked = $(ev.currentTarget).prop('checked');
+    // find this forcing layer in the vector features
+    var vectors = this.forcingLayers.getFeaturesByAttribute("name", forcing),
+        that = this;
+    _.each(vectors,function(feature, index) {
+      if (checked) {
+        feature.style.display = '';
+      } else {
+        feature.style.display = 'none';
+      }
+    });
+    that.forcingLayers.redraw();
+  },
+
+  // Called when the user clicks on the 'Update Grid' button - usually after
+  // changing one or more of the grid info fields
+	updateGridFromInputs: function(e) {
+		'use strict';
+
+    // update the translated origin after translation and rotation only
+    var updateTransOrigin = false;
+
+    // check inputs are valid
+    var edits = $(this.el).find(".edit");
+    var inputsOk = true;
+    _.each(edits, function(input) {
+      if (isNaN($(input).val())) {
+        $(input).addClass('error-style');
+        inputsOk = false; 
+      } else {
+        $(input).removeClass('error-style');
+      }
+      var equal = ($(input).prop('defaultValue') !== $(input).val());
+      if ($(input).prop('defaultValue') !== $(input).val()) {
+        if ($(input).hasClass('originmove')) {
+          updateTransOrigin = true;
+        }
+        $(input).prop('defaultValue', $(input).val());
+      }
+    });
+
+    // activate control (shouldn't be necessary)
+    this.control.activate();
+
+    if (!inputsOk) return;
+
+    // translate from old position to new
+    var poly = this.vectorLayer.features[0].geometry;
+    poly.transform(this.map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+    var first = poly.components[0].components[0].clone(); // first point
+    var xtO = parseFloat($('#x-transOrigin').val()),
+        ytO = parseFloat($('#y-transOrigin').val()),
+        orig = new OpenLayers.Geometry.Point(parseFloat($('#x-origin').val()), parseFloat($('#y-origin').val()));
+
+    if (this.proj !== "EPSG:4326") {
+      orig.transform(this.oproj, new OpenLayers.Projection("EPSG:4326"));
+    }
+    orig.x += (xtO - first.x);
+    orig.y += (ytO - first.y);
+    orig.transform(new OpenLayers.Projection("EPSG:4326"), this.oproj);
+    $('#x-origin').val(orig.x);
+    $('#y-origin').val(orig.y);
+
+    // now calculate new region from origin, size and spacing
+    var region = this.getRegionFromElements();
+
+    // set this region as the transform shape
+		this.setRegion(region, updateTransOrigin);
+
+    // activate gridaction button (remove disabled attribute)
+    $('.gridaction').attr('disabled','disabled');
+	},
+
+  // Extract the grid values from the input fields and recalculates a new grid
+  // extent for display on the map
+	getRegionFromElements: function() {
+		'use strict';
+    var x0 = parseFloat($('#x-origin').val()),
+        y0 = parseFloat($('#y-origin').val()),
+        nx = parseFloat($('#ni').val()),
+        ny = parseFloat($('#nj').val()),
+        xs = parseFloat($('#dphi').val()),
+        ys = parseFloat($('#dlambda').val()),
+				rotation = parseFloat($('#rotation').val());
+    var x1 = x0 + (nx * xs),
+        y1 = y0 + (ny * ys);
+    return { 
+			polygon: new OpenLayers.Geometry.Polygon([
+      	new OpenLayers.Geometry.LinearRing([
+        	new OpenLayers.Geometry.Point(x0, y0),
+        	new OpenLayers.Geometry.Point(x1, y0),
+        	new OpenLayers.Geometry.Point(x1, y1),
+        	new OpenLayers.Geometry.Point(x0, y1),
+        	new OpenLayers.Geometry.Point(x0, y0)
+      	])
+    	]),
+			options: {
+				rotation: rotation
+			}
+		};
+	},
+
+  // Create the OpenLayers map used to display the grid extent 
+  // Note: don't assume that the model has been set when createMap is run
+  // 
+	createMap: function() {
+		'use strict';
+
+    var arrayOSM = [
+                "http://otile1.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                "http://otile2.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                "http://otile3.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                "http://otile4.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg"
+               ];
+    var arrayAerial = [
+                "http://otile1.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                "http://otile2.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                "http://otile3.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                "http://otile4.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg"
+                  ];
+
+    var baseOSM = new OpenLayers.Layer.OSM("MapQuest-OSM Tiles", arrayOSM);
+    var baseAerial = new OpenLayers.Layer.OSM("MapQuest Open Aerial Tiles", arrayAerial);
+
+    var mapserv = new OpenLayers.Layer.MapServer( "OpenLayers Basic",
+       "http://vmap0.tiles.osgeo.org/wms/vmap0",
+       {layers: 'basic'},
+       {wrapDateLine: true, visibility: true, isBaseLayer: true} );
+
+    var highResBathy = new OpenLayers.Layer.WMS( "Bathymetry Colour", 
+       "http://www.marine.csiro.au/geoserver/wms",
+       {layers: 'GA:GA_2009_bathy', transparent: true},
+       {wrapDateLine: true, visibility: true, isBaseLayer: false} );
+
+    this.map  = new OpenLayers.Map({
+      theme: null,
+      maxResolution: 1.40625,
+      projection: "EPSG:4326",
+      displayProjection: new OpenLayers.Projection("EPSG:4326"),
+      controls: [
+        new OpenLayers.Control.Navigation(),
+        new OpenLayers.Control.PanZoomBar(),
+        new OpenLayers.Control.Graticule({
+           numPoints: 2, 
+           labelled: true,
+           visible: false
+        }),
+        new OpenLayers.Control.LayerSwitcher(),
+        new OpenLayers.Control.KeyboardDefaults()
+      ],
+      layers: [
+        mapserv,
+        highResBathy
+      ]
+    });
+
+    this.vectorLayer = new OpenLayers.Layer.Vector("Grid Definition", {
+      styleMap: new OpenLayers.StyleMap({
+        // a nice style for the transformation box
+        "transform": new OpenLayers.Style({
+          display: "${getDisplay}",
+          cursor: "${role}",
+          pointRadius: 5,
+          fillColor: "white",
+          fillOpacity: 1,
+          strokeColor: "black"
+        }, {
+          context: {
+            getDisplay: function(feature) {
+              // hide the resize handle at the south-west corner
+              return feature.attributes.role === "sw-resize" ? "none" : "";
+            }
+          }
+        }),
+        "rotate": new OpenLayers.Style({
+          display: "${getDisplay}",
+          pointRadius: 10,
+          fillColor: "#ddd",
+          fillOpacity: 1,
+          strokeColor: "black"
+        }, {
+          context: {
+            getDisplay: function(feature) {
+              // only display the rotate handle at the south-west corner
+              return feature.attributes.role === "sw-rotate" ? "" : "none";
+            }
+          }
+        })
+      })
+    });
+
+  	this.control = new OpenLayers.Control.TransformFeature(this.vectorLayer, {
+      renderIntent: "transform",
+      rotationHandleSymbolizer: "rotate",
+      irregular: true
+  	});
+  	this.map.addControl(this.control);
+
+  	this.map.addLayer(this.vectorLayer);
+
+		var that=this;
+		this.control.events.on({
+			transform: function(ev) { 
+				if (ev.rotation) {
+				    
+					var rot = parseInt($("#rotation").val()) + parseInt(ev.rotation);
+					
+					if (rot >= 360) {
+					  rot = rot - 360
+					} else if (rot < 0) {
+					  rot = 360 - Math.abs(rot)
+					}
+					
+					$("#rotation").val(rot);
+				}
+			},
+			transformcomplete: function(ev) {
+				var geom = ev.feature.geometry.clone();
+				var centre = geom.getCentroid();
+				var rotation = -1 * parseInt($("#rotation").val());
+				var nx = parseFloat($('#dphi').val());
+				var ny = parseFloat($('#dlambda').val()); 
+				var points = geom.getVertices();
+
+        // show transformed origin in EPSG:4326
+        var transOrig = new OpenLayers.Geometry.Point(points[0].x, points[0].y);
+        transOrig.transform(that.map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+        that.setTransOrig(transOrig.x, transOrig.y);
+
+        // now transform shape and calculate number of cells and origin
+				_.each(points, function(item){
+					if (rotation != 0) {
+						item.rotate(rotation, centre);
+					}
+					item.transform(that.map.getProjectionObject(), that.oproj);
+				});
+
+				var bounds = geom.getBounds();
+				$('#ni').val(Math.round(Math.abs(bounds.right-bounds.left)/nx));
+				$('#nj').val(Math.round(Math.abs(bounds.top-bounds.bottom)/ny));				
+				$('#x-origin').val(bounds.left);
+				$('#y-origin').val(bounds.bottom);
+			},
+		});
+  },
+
+  // Standard backbone render method - waits on sources because the
+  // sources need to be rendered as boxes
+	render : function () { 
+		'use strict';
+
+    var that = this;
+    if (this.model.sources.deferred) {
+      this.model.sources.deferred.done(function() {
+
+		    if (that.model.getSelectedIndex() >= 0) {
+			    var modelToRender = that.model.getSelectedItem(),
+              grid = modelToRender.get('grid');
+      
+          if (grid['type'] === 'geographic-rectangular') {
+            that.template = geographicTemplate;
+          } else if (grid['type'] === 'rectangular') {
+            that.template = rectangularTemplate;
+            if (isNaN(grid['rotation'])) grid['rotation'] = '0.0';
+          } else {
+            // FIXME: Should be trapped elsewhere
+          }
+
+          var forcings = [];
+          that.model.sources.each(function (item, index) {
+            forcings.push(item.get('name'));
+          });
+          grid['forcingDatasets'] = forcings;
+
+    	    var json = JSON.parse(JSON.stringify(grid));
+    	    $(that.el).empty();
+    	    $(that.el).append(that.template(json));
+
+          // unfortunate that we have to have a wait here until the DOM
+          // DOM settles down and we can render the OL map!
+		      setTimeout(function(){
+			      that.map.render($(that.mapEl).get(0));
+			      that.map.updateSize();
+			      that.onModelChange();
+			    },400);
+
+          that.addSourceLayers();
+
+          // add clickover on forcing list stuff
+          var pop = $(that.el).find('[data-toggle="clickover"]');
+          $(pop).clickover({
+            html: true,
+            width: 300,
+            content: function() {
+              return $(that.el).find('[data-forcing="forcingDatasets"]').html(); 
+            },
+            onHidden: function() {
+              _.each(that.forcingLayers.features, function(feature, index) {
+                feature.style.display = 'none';
+              });
+              that.forcingLayers.redraw();
+            }
+          });
+
+        }
+      });
+		}
+		return this;
+	},
+
+  // As this view is used in the wizard setup, it must be told to update
+  // the model when the user selects next/previous
+  updateModel : function(){
+		'use strict';
+		var modelToUpdate = this.model.getSelectedItem();
+		var grid = modelToUpdate.get('grid');
+		grid['x-origin'] = $('#x-transOrigin').val();
+		grid['y-origin'] = $('#y-transOrigin').val();
+		grid['ni'] = $('#ni').val();
+		grid['nj'] = $('#nj').val();
+		grid['rotation'] = $('#rotation').val();
+    if (grid['type'] === 'geographic-rectangular') {
+		  grid['dphi'] = $('#dphi').val();
+		  grid['dlambda'] = $('#dlambda').val();
+    } else if (grid['type'] === 'rectangular') {
+		  grid['dx'] = $('#dphi').val();
+		  grid['dy'] = $('#dlambda').val();
+      var proj = grid['projection-proj4'].split("+");
+      var outp = "";
+      _.each(proj,function(item) {
+        if (item.length > 0) {
+          if (item.indexOf("lon_0") >= 0) {
+            outp += "+lon_0="+grid['x-origin'];
+          } else if (item.indexOf("lat_0") >= 0) {
+            outp += "+lat_0="+grid['y-origin'];
+          } else {
+            outp += "+"+item;
+          }
+        }
+      });
+      grid['projection-proj4'] = outp;
+    } else {
+      // FIXME: Should be trapped elsewhere
+    }
+
+    // set the transformed extent into grid['bounds'] for the current model
+    var bounds = this.vectorLayer.features[0].geometry.getBounds()
+    bounds.transform(this.map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
+    //console.log("Extent before: "+grid['bounds']+" Extent after: "+bounds);
+    grid['bounds'] = bounds;
+
+		return true;
+	},
+
+	afterRender: function() {
+		'use strict';
+  },
+
+
+	addSourceLayers: function() {
+		'use strict';
+
+    var polyStyle = {
+                strokeColor: "yellow",
+                strokeOpacity: 1,
+                strokeWidth: 4,
+                fillColor: "yellow",
+                fillOpacity: 0.2,
+                pointRadius: 20,
+                display: 'none'
+    };
+
+    // Remove all forcing layers from this.forcingLayers if it exists already
+    if (!this.forcingLayers) {
+      this.forcingLayers = new OpenLayers.Layer.Vector("Forcing Layers", {
+        isBaseLayer: false,
+        displayInLayerSwitcher: false
+      });
+  	  this.map.addLayer(this.forcingLayers);
+    } else {
+      this.forcingLayers.removeAllFeatures();
+    }
+
+    // Now that the map has been rendered, add bbox layers to the 
+    // map window to ensure that the user can choose a grid extent that
+    // is inside one of the sources
+    var that = this;
+    this.model.sources.each(function (item, index) {
+      var name = item.get('name');
+      var bounds = item.getBounds();
+      bounds.transform(new OpenLayers.Projection("EPSG:4326"), that.map.getProjectionObject());
+      var poly = bounds.toGeometry();
+      var polyFeature = new OpenLayers.Feature.Vector(poly, {"name": name});
+      polyFeature.style = _.clone(polyStyle);
+      that.forcingLayers.addFeatures([polyFeature]);
+    });
+
+	}
+
+ });
+
+ return GridView;
+});

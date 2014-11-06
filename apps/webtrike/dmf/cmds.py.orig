@@ -1,0 +1,49 @@
+from apps.webtrike import trike
+from apps.webtrike.comms import dmf_instance
+
+from django.core import cache
+
+class DMFCommand(trike.TrikeCommand):
+    "Base class of all DMF commands; don't use directly."
+    _should_cache = False
+
+    @classmethod
+    def _get_remote(cls):
+        return dmf_instance()
+
+    @classmethod
+    def _get_cache(cls):
+        return cache.get_cache('dmf')
+
+class DataStreams(DMFCommand):
+    """Response type for the list of known data streams.  The single field
+    `streams' is a list type."""
+    streams = trike.TrikeField(json_name='data-stream')
+
+class DataSets(DMFCommand):
+    """Response type for the list of data sets available for a given
+    stream; `invoke()` must be supplied with the 'data-stream' keyword
+    argument.  The single field `sets' is a list type.
+    """
+    sets = trike.TrikeField(json_name='data-set')
+
+class DataTypes(DMFCommand):
+    """Response type for the list of known data types.  The single field
+    `types' is a list type."""
+    types = trike.TrikeField(json_name='data-type')
+
+class DataTypesForDataset(DMFCommand):
+    """Response type for the data types associated with a particular data
+    set; `invoke()` must be called with the 'data-stream' and
+    'data-set' keyword arguments.  The single field `types' is a list
+    type.
+    """
+    types = trike.TrikeField(json_name='data-type')
+
+class DataTypesForDatasets(DMFCommand):
+    """Response type for the data types associated with a particular data
+    set; `invoke()` must be called with the 'data-stream' and
+    'data-set' keyword arguments.  The single field `types' is a list
+    type.
+    """
+    types = trike.TrikeField(json_name='data-type')

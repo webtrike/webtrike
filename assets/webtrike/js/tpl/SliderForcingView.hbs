@@ -1,0 +1,80 @@
+<div class="runalerts">
+</div>
+<div class="wizard-view">
+	<h3>Temporal Extent and Forcing Data</h3>    
+	<blockquote>Set the temporal extent and select one forcing dataset from each group.</blockquote>
+  <div class="container-fluid">
+    <div class="well well-small">
+		<div class="row-fluid">
+			<div class="span2">
+				<h4>Temporal Extent:</h4>
+			</div>
+		</div>
+	  <div class="row-fluid">
+      <label class="radio inline span3">
+		    <input type="radio" id="textentSelect" class="hide"/>
+      </label>
+      <input type="text" data-set="textent" class="span9 inline setDisplay" style="border: 0; color: #f6931f; font-weight: bold;"/>
+    </div>
+	  <div class="row-fluid">
+			<div class="span12">
+        <div id="textent" class="sliderForcing"></div>
+			</div>
+    </div>
+	  <div class="row-fluid">
+			<div class="span12">
+          <a href="#" role="button" class="zoomExtent btn">Zoom</a>
+          <a href="#" role="button" class="resetExtent btn">Reset</a>
+			</div>
+    </div>
+    </div>
+  </div>
+	{{#groupedVars streams}}
+  <div class="container-fluid">
+    <div class="well well-small">
+		<div class="row-fluid">
+			<div class="span2">
+				<h4>{{streamName}}:</h4>
+			</div>
+		</div>
+		{{#each sets}}
+	  	<div class="row-fluid">
+			  <div class="span12">
+          <label class="radio inline span3">
+				    <input type="radio" data-set="{{set}}" data-stream="{{../stream}}" class="setSelect"/><span rel="popover" data-trigger="hover" data-set="{{set}}" data-title="Provides variables:">{{set}} <i class="icon-info-sign"></i></span>
+          </label>
+          <input type="text" data-set="{{set}}" class="span8 inline setDisplay" style="border: 0; color: #f6931f; font-weight: bold;"/>
+          <button type="button" class="close setDisable" data-set="{{set}}" data-stream="{{../stream}}">&times;</button>
+        </div>
+      </div>
+	  	<div class="row-fluid">
+        <div class="span12">
+			    <div id="{{set}}" class="sliderForcing"></div>
+        </div>
+			</div>
+      <!-- for popover display -->
+	  	<div data-set="{{set}}" class="setVariables" style="display:none;">
+			  <table class="table table-condensed">
+					  <thead>  
+						  <tr>  
+							  <th>Name</th>  
+							  <th>Units</th>  
+							  <th>Description</th>  
+						  </tr>
+					  </thead>
+					  <tbody>
+              {{#each variables}}
+							  <tr>
+								  <td width="20%">{{name}}</td>
+								  <td width="20%">{{unit}}</td>
+								  <td width="60%">{{description}}</td>
+							  </tr>
+              {{/each}}
+					  </tbody>
+			  </table>
+		  </div>
+		{{/each}}
+    </div>
+  </div>
+	{{/groupedVars}}
+</div>

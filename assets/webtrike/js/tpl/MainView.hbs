@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  {{#if email}}
+  {{else}}
+	<div class="row-fluid top-buffer">
+		<div class="span12">
+			<div class="alert alert-info">
+				<strong>webMARVL - MARine Virtual Laboratory - Model Runs</strong>
+			</div>
+		</div>
+	</div>
+  {{/if}}
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="well">
+				<a href="#" role="button" 
+						class="newModel btn btn-primary span2">New</a> 
+				<a href="#" role="button" 
+						class="editModel btn btn-primary span2 disabled hidden">Edit</a>
+				<a href="#" role="button" 
+						class="cloneModel btn btn-primary span2 disabled hidden">Clone</a>
+				<a href="#" role="button" 
+						class="deleteModel btn btn-primary span2 disabled">Delete</a>
+				<a href="#" role="button" 
+						class="abortModel btn btn-primary span2 disabled">Abort</a>
+				<a href="#" role="button" 
+						class="submitModel btn btn-primary span2 disabled hidden">Submit</a>
+			</div>
+		</div>
+	</div>
+  <div class="mainalerts">
+  </div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="well">
+				<div id="job-status-container"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal for New Model Specification  - see WizardView.{js,hbs} -->
+<div id="wizardModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+<!-- Modal for YesNo dialogs  - see YesNoView.{js,hbs} -->
+<div id="yesNoModal" class="modal hide fade"></div>
+
+<!-- Modal for License dialogs  - see LicenseView.{js,hbs} -->
+<div id="licenseModal" class="modal hide fade"></div>
+
+<!-- Modal for Download dialogs  - see DownloadView.{js,hbs} -->
+<div id="downloadModal" class="modal hide fade"></div>
+

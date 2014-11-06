@@ -1,0 +1,562 @@
+{
+    "get-data-streams": {
+        "command" : "data-streams",
+        "subcommands" : [ {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "atmos-obs",
+                "description" : "atmos observations"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "bathymetry",
+                "description" : "bathymetric data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "coastline",
+                "description" : "coastline data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "global-atmos",
+                "description" : "global atmospheric data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "global-ocean",
+                "description" : "global oceanic data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "land",
+                "description" : "land"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "land-obs",
+                "description" : "land observations"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "local-atmos",
+                "description" : "local atmospheric data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "local-atmos2ocean",
+                "description" : "ocean local atmospheric forcing"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "local-ocean",
+                "description" : "local oceanic data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "local-wave",
+                "description" : "local wave data"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "ocean-obs",
+                "description" : "ocean observations"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "statistics",
+                "description" : "domain statistics"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "tidal-model",
+                "description" : "tidal model output"
+            }
+        }, {
+            "command" : "data-stream",
+            "params" : {
+                "name" : "topography",
+                "description" : "topographic data"
+            }
+        } ]
+    },
+
+
+
+    "get-data-sets": {
+        "command" : "data-sets",
+        "subcommands" : [ {
+            "command" : "data-set",
+            "params" : {
+                "name" : "shoc",
+                "description" : "SHOC output"
+            }
+        }, {
+            "command" : "data-set",
+            "params" : {
+                "name" : "xbeach",
+                "description" : "XBeach output"
+            }
+        } ]
+    },
+
+
+
+    "get-data-types": {
+        "command" : "data-types",
+        "subcommands" : [ {
+            "command" : "data-type",
+            "params" : {
+                "name" : "temp",
+                "description" : "temperature",
+                "unit" : "degree C",
+                "id" : "1"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "salt",
+                "description" : "salinity",
+                "unit" : "PSU",
+                "id" : "2"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "u",
+                "description" : "Eastward current",
+                "unit" : "m s-1",
+                "id" : "3"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "v",
+                "description" : "Northward current",
+                "unit" : "m s-1",
+                "id" : "4"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "height",
+                "description" : "height",
+                "unit" : "meter",
+                "id" : "5"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "tidal-orthoweights",
+                "description" : "tidal-orthoweights",
+                "unit" : "UNK",
+                "id" : "6"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "tidal-consts",
+                "description" : "tidal-consts",
+                "unit" : "UNK",
+                "id" : "7"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "eta",
+                "description" : "seasurface elevation",
+                "unit" : "meter",
+                "id" : "8"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "heatflux",
+                "description" : "seasurface heatflux",
+                "unit" : "degree C",
+                "id" : "9"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "swr",
+                "description" : "shortwave radiation",
+                "unit" : "W/m2",
+                "id" : "10"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wind_u",
+                "description" : "U direction wind speed",
+                "unit" : "m/s",
+                "id" : "11"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wind_v",
+                "description" : "V direction wind speed",
+                "unit" : "m/s",
+                "id" : "12"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "pressure",
+                "description" : "Air pressure",
+                "unit" : "Pascal",
+                "id" : "13"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "atmospheric-mixing-ratio",
+                "description" : "atmospheric mixing ratio",
+                "unit" : "kg/kg",
+                "id" : "14"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "geopotential-height",
+                "description" : "geopotential height",
+                "unit" : "m2/s2",
+                "id" : "15"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "coastline-contour",
+                "description" : "coastline contours",
+                "unit" : "UNK",
+                "id" : "16"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "sig_wav_ht",
+                "description" : "Significant wave height",
+                "unit" : "metres",
+                "id" : "17"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "sig_wav_dir",
+                "description" : "Significant wave mean direction",
+                "unit" : "degrees",
+                "id" : "18"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wnd_spd",
+                "description" : "10m Wind speed",
+                "unit" : "m/s",
+                "id" : "19"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wnd_dir",
+                "description" : "Wind direction",
+                "unit" : "degrees",
+                "id" : "20"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "mn_wav_per",
+                "description" : "Mean Period",
+                "unit" : "seconds",
+                "id" : "21"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "peak_wav_per",
+                "description" : "Peak Period",
+                "unit" : "seconds",
+                "id" : "22"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_height",
+                "description" : "Wave Height",
+                "unit" : "metres",
+                "id" : "23"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_direction",
+                "description" : "Wave Direction",
+                "unit" : "degrees",
+                "id" : "24"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_length",
+                "description" : "Wave Length",
+                "unit" : "metres",
+                "id" : "25"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wet_bulb",
+                "description" : " ",
+                "unit" : " ",
+                "id" : "26"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "dew_point",
+                "description" : "Dew Point",
+                "unit" : "degree C",
+                "id" : "27"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "humidity",
+                "description" : "Humidity",
+                "unit" : "percent",
+                "id" : "28"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "cloud",
+                "description" : "Cloud Coverage",
+                "unit" : "percent",
+                "id" : "29"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "lwr",
+                "description" : "incident flux of longwave radiation - outgoing",
+                "unit" : "W/m2",
+                "id" : "30"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "lwr_in",
+                "description" : "incident flux of longwave radiation - incoming",
+                "unit" : "W/m2",
+                "id" : "31"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "sensible",
+                "description" : "surface sensible heat flux",
+                "unit" : "W/m2",
+                "id" : "32"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "latent",
+                "description" : "surface latent heat flux",
+                "unit" : "W/m2",
+                "id" : "33"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "air_tmp2m",
+                "description" : "Air Temperature at 2m",
+                "unit" : "degreeC",
+                "id" : "34"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "doxygen",
+                "description" : "Dissolved Oxygen",
+                "unit" : "mmol/kg",
+                "id" : "35"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "conductivity",
+                "description" : "Electrical Conductivity",
+                "unit" : "mhos/m",
+                "id" : "36"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "flow",
+                "description" : "Flow",
+                "unit" : "m3/s",
+                "id" : "37"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "level",
+                "description" : "Height Level",
+                "unit" : "metre",
+                "id" : "38"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "sst",
+                "description" : "Sea Surface Temperature",
+                "unit" : "degree C",
+                "id" : "39"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "mn_wav_dir",
+                "description" : "Mean Wave direction",
+                "unit" : "degrees",
+                "id" : "40"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_dissipation",
+                "description" : "Wave Energy Dissipation",
+                "unit" : "W/m2",
+                "id" : "41"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_roller_dissipation",
+                "description" : "Wave Roller Energy Dissipation",
+                "unit" : "W/m2",
+                "id" : "42"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_mean_roller_energy",
+                "description" : "Mean Wave Roller Energy",
+                "unit" : "Nm/m2",
+                "id" : "43"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_breaker_index",
+                "description" : "Fraction Breaking Waves",
+                "unit" : "",
+                "id" : "44"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "orbital_velocity",
+                "description" : "Wave Orbital Velocity",
+                "unit" : "",
+                "id" : "45"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_forceX",
+                "description" : "Wave Force in x-direction",
+                "unit" : "N/m2",
+                "id" : "46"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_forceY",
+                "description" : "Wave Force in y-direction",
+                "unit" : "N/m2",
+                "id" : "47"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "wave_mean_energy",
+                "description" : "Mean Wave Energy",
+                "unit" : "Nm/m2",
+                "id" : "48"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "w",
+                "description" : "vertical velocity",
+                "unit" : "m s-1",
+                "id" : "49"
+            }
+        } ]
+    },
+
+
+
+    "get-data-types-for-dataset": {
+        "command" : "data-types-for-dataset",
+        "subcommands" : [ {
+            "command" : "data-type",
+            "params" : {
+                "name" : "temp",
+                "description" : "temperature",
+                "unit" : "degree C",
+                "id" : "1"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "salt",
+                "description" : "salinity",
+                "unit" : "PSU",
+                "id" : "2"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "u",
+                "description" : "Eastward current",
+                "unit" : "m s-1",
+                "id" : "3"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "v",
+                "description" : "Northward current",
+                "unit" : "m s-1",
+                "id" : "4"
+            }
+        }, {
+            "command" : "data-type",
+            "params" : {
+                "name" : "eta",
+                "description" : "seasurface elevation",
+                "unit" : "meter",
+                "id" : "8"
+            }
+        } ]
+    }
+
+}

@@ -1,0 +1,27 @@
+{% extends "webtrike-base.html" %}
+
+{% block content %}
+  <!-- bootstrap stuff starts here: -->
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <script data-main="static/webtrike/js/main" src="static/libs/require.min.js"></script>
+
+  <script>
+    // Global configuration:
+    window.Configuration = {
+      UserInfo: {
+	      email:            "{{ request.GET.email }}",
+	      organisation:     "{{ request.GET.organisation }}",
+	      username:         "{{ request.GET.username }}",
+        forwarded:        "{{ request.META.HTTP_X_FORWARDED_FOR }}",
+        ipaddress:        "{{ request.META.REMOTE_ADDR }}"
+			},
+			Urls: {
+				modelProviders:  "{% url 'model-providers-base-url' %}",
+				availableModels: "{% url 'available-models' %}",
+				manageRuns:      "{% url 'manage-runs' %}" 
+      }
+    };
+  </script>
+{% endblock %}

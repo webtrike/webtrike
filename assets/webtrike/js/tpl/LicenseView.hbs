@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <a href="#" class="close licenseCancel">&times;</a>
+  <h3>Data License Acceptance</h3>
+</div>
+<div class="modal-body">
+  {{#each license}}
+    <div class="row-fluid">
+      <div class="span12">
+        <h4>Using {{dataset}} requires a license:</h4>
+      </div>
+    </div>
+    <div class="row-fluid license{{dataset}}">
+      <div class="span12">
+        <b>Loading....</b>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<div class="modal-footer">
+  <a href="#" class="btn secondary licenseCancel">Cancel</a>
+  <a href="#" class="btn secondary licenseOk">Accepted by {{userinfo.username}} ({{userinfo.email}})</a>
+</div>
+

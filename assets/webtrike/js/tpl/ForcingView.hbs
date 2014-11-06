@@ -1,0 +1,47 @@
+<div class="runalerts">
+</div>
+<div class="wizard-view">
+	<h3>Forcing Data</h3>    
+	<blockquote>Choose the forcing datasets to use.</blockquote>
+	{{#groupedVars vars}}
+		<div class="row-fluid">
+			<div class="span2">
+				<h4>{{streamName}}:</h4>
+			</div>
+			<div class="span4" id="{{stream}}">
+				<select></select>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12 accordion" id="accordion-{{stream}}">
+			  <div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-{{stream}}" href="#collapse-{{stream}}"><i class="icon-resize-vertical"> </i>Show {{streamName}} Variables</a>
+					</div>
+					<div id="collapse-{{stream}}" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<table class="table table-condensed">
+								<thead>  
+									<tr>  
+										<th>Name</th>  
+										<th>Units</th>  
+										<th>Description</th>  
+									</tr>
+								</thead>
+								<tbody>
+									{{#each variable}}
+										<tr>
+											<td width="20%">{{name}}</td>
+											<td width="20%">{{unit}}</td>
+											<td width="60%">{{description}}</td>
+										</tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/groupedVars}}
+</div>

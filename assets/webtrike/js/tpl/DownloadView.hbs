@@ -1,0 +1,33 @@
+<div class="modal-header">
+   <a href="#" class="close downloadClose">&times;</a>
+   <h3>Download Files</h3>
+</div>
+<div class="modal-body">
+ <div class="row-fluid">
+  <div class="span12">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>File name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each downloads}}
+          <tr>
+            <td>
+              <span>{{.}}</span><br/>
+            </td>
+            <td>
+              <a href="{{.}}" role="button" class="btn btn-small btn-success multipleDownloadButton" style="text-transform:capitalize;">Download</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+ </div>
+</div>
+<div class="modal-footer">
+  <a href="#" class="btn danger downloadClose">OK</a>
+</div>

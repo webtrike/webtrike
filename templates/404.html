@@ -1,0 +1,10 @@
+{% extends "webtrike-base.html" %}
+
+{% block title %}webMARVL: Page Not Found{% endblock %}
+
+{% block content %}
+  <div class="alert alert-error">
+    The path you requested (<b>{{ request.get_full_path }}</b>) could
+    not be found or does not exist, sorry.
+  </div>
+{% endblock %}

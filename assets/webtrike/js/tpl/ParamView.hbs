@@ -1,0 +1,82 @@
+<div class="container-fluid">
+   <div class="row-fluid">
+     <div class="span12">
+      <strong>Model: </strong>
+        <ul>
+          <li>{{name}}</li>
+        </ul>
+     </div>
+   </div>
+   <div class="row-fluid">
+     <div class="span8">
+      <strong>Grid: </strong>
+      {{#with grid}}
+         <ul>
+           {{#if projection}}
+              <li>Projection: {{projection-proj4}}</li>
+            {{/if}}
+            <li>Type: {{type}}</li>
+            <li>X-Origin: {{x-origin}}</li>
+            <li>Y-Origin: {{y-origin}}</li>
+            {{#if dlambda}}
+               <li>D-Lambda: {{dlambda}}</li>
+               <li>D-Phi: {{dphi}}</li>
+            {{/if}}
+            {{#if dx}}
+               <li>Dx: {{dx}}</li>
+               <li>Dy: {{dy}}</li>
+            {{/if}}
+            <li>Ni: {{ni}}</li>
+            <li>Nj: {{nj}}</li>
+            <li>Rotation: {{rotation}}</li>
+         </ul>
+      {{/with}}
+     </div>
+     <div class="span4">
+      <strong>Temporal Extent: </strong>
+        <ul>
+         <li>Start: {{base-date}}</li>
+         <li>Duration: {{temporalextent.stop-time}}</li>
+        </ul>
+     </div>
+   </div>
+   {{#if forcing.variables}}
+     <div class="row-fluid">
+      <div class="span12">
+        <strong>Forcing: </strong>
+      </div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Stream</th>
+            <th>Dataset</th>
+            <th>Variable Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#with forcing}}
+            {{#each variables}}
+              <tr>
+                <td width="20%">{{stream}}</td>
+                {{#if license}}
+                  <td width="20%">{{set}}&nbsp;<span data-toggle="tooltip" data-placement="bottom" title="Accepted by {{license.username}} ({{license.email}}) at {{license.when}} from {{license.ipaddress}}"><a href="{{license.url}}" target="_blank">(License)</a></td></span>
+                {{else}}
+                  <td width="20%">{{set}}</td>
+                {{/if}}
+                <td width="20%">{{name}}</td>
+                <td width="40%">{{description}}</td>
+              </tr>
+            {{/each}}
+          {{/with}}
+        </tbody>
+      </table>
+     </div>
+   {{/if}}
+</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+     <button class="btn" style="float:right;" data-dismiss="clickover">Close</button>
+  </div>
+</div>
+

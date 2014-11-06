@@ -1,0 +1,198 @@
+{
+    "command" : "submit-run",
+    "params" : {
+        "run-group-id" : "1"
+    },
+    "subcommands" : [ {
+        "command" : "run-parameters",
+        "params" : {
+            "run-name" : "07-11-2012 03",
+            "description" : "description of run",
+            "scheduling" : "immediate",
+            "scheduled-start-time" : "2012-11-07 03:56:40.282",
+            "priority" : "medium",
+            "auto-repeat" : "false",
+            "auto-repeat-interval" : "0.0",
+            "privileges" : "9223372036854775807",
+            "runId" : "-1",
+            "user_id" : "-1",
+            "runGroupId" : "-1",
+            "rapid-progression" : "false"
+        }
+    }, {
+        "command" : "model-parameters",
+        "params" : {
+            "model-type" : "shoc",
+            "default" : "true",
+            "name" : "ocean_oceanmaps2",
+            "__SET_NAME" : "ocean_oceanmaps2",
+            "model" : "shoc",
+            "base-date" : "2012-11-07 03:30:00",
+            "description" : "SHOC. Oceanmaps2 & ACCESS forcing."
+        },
+        "subcommands" : [ {
+            "command" : "run",
+            "params" : {
+                "model" : "shoc",
+                "base-date" : "2000-01-01 00:00 +00",
+                "noutputs" : "4",
+                "description" : "SHOC. Oceanmaps2 & ACCESS forcing.",
+                "default" : "true"
+            }
+        }, {
+            "command" : "grid",
+            "params" : {
+                "type" : "geographic-rectangular",
+                "x-origin" : "146.25",
+                "y-origin" : "-44.0",
+                "ni" : "35",
+                "nj" : "45",
+                "rotation" : "0.0",
+                "dlambda" : "0.050362033646109236",
+                "dphi" : "0.050362033646109236",
+                "dx" : "5600.0",
+                "dy" : "5600.0"
+            }
+        }, {
+            "command" : "simulation-period",
+            "params" : {
+                "spinup-time" : "4 days",
+                "start-time" : "0 days",
+                "stop-time" : "1 days",
+                "etc" : "0.0"
+            }
+        }, {
+            "command" : "topography",
+            "params" : {
+                "coastline" : "coastline/shoc-coastline",
+                "forcing-model-bathymetry" : "bathymetry-aus",
+                "bathymetry-aus" : "bathymetry/shoc-aus-bathymetry",
+                "bathymetry-global" : "bathymetry/shoc-global-bathy-gebco",
+                "forcing-geoextent-bathymetry-aus" : "[x=90,y=-60,w=88,h=70]",
+                "alternate-forcing-bathymetry-aus" : "bathymetry-global"
+            }
+        }, {
+            "command" : "forcings",
+            "params" : {
+                "forcing-model-pressure" : "access_a_sfc",
+                "forcing-model-wind" : "access_a_sfc",
+                "forcing-model-salinity" : "salinity_ofam",
+                "forcing-model-temperature" : "temperature_ofam",
+                "forcing-model-eta" : "eta_ofam",
+                "forcing-model-velocity" : "velocity_ofam",
+                "forcing-model-heatflux" : "",
+                "forcing-model-swr" : "",
+                "forcing-model-tidal" : "tidal-csr-orthoweights&tidal-csr-consts",
+                "tidal-csr-orthoweights" : "tidal-model/csr-tidal-orthoweights",
+                "tidal-csr-consts" : "tidal-model/csr-tidal-consts",
+                "eta_ofam" : "global-ocean/ofam2-an:<update-freq,24><precedence,10>&ofam2-nrt:<update-freq,24><precedence,20>&ofam2-fc:<reference,true><update-freq,24><precedence,30><translate,eta,eta_t><pushFTP,true>",
+                "temperature_ofam" : "global-ocean/ofam2-an:<update-freq,24><precedence,10>&ofam2-nrt:<update-freq,24><precedence,20>&ofam2-fc:<reference,true><update-freq,24><precedence,30><pushFTP,true>",
+                "salinity_ofam" : "global-ocean/ofam2-an:<update-freq,24><precedence,10>&ofam2-nrt:<update-freq,24><precedence,20>&ofam2-fc:<reference,true><update-freq,24><precedence,30><pushFTP,true>",
+                "velocity_ofam" : "global-ocean/ofam2-an:<update-freq,24><precedence,10>&ofam2-nrt:<update-freq,24><precedence,20>&ofam2-fc:<reference,true><update-freq,24><precedence,30><wait-for-local,false><pushFTP,true>",
+                "forcing-wait-eta_ofam" : "36",
+                "forcing-wait-temperature_ofam" : "36",
+                "forcing-wait-salinity_ofam" : "36",
+                "forcing-wait-velocity_ofam" : "36",
+                "heatflux" : "",
+                "swr" : "",
+                "wind-laps" : "global-atmos/laps:<update-freq,24><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><extract,gasp2shoc><aggregate,laps_wind.nc><wait-for-local,false><pushFTP,true>",
+                "pressure-laps" : "global-atmos/laps:<update-freq,24><translate,pressure,sfc_pres><extract,gasp2shoc><aggregate,laps_pressure.nc><wait-for-local,false><pushFTP,true>",
+                "wind-gasp" : "global-atmos/gasp:<update-freq,24><translate,wind_v,zonal_wnd><translate,wind_u,merid_wnd><extract,gasp2shoc><aggregate,gasp_wind.nc><wait-for-local,false><pushFTP,true>",
+                "pressure-gasp" : "global-atmos/gasp:<update-freq,24><translate,pressure,sfc_pres><extract,gasp2shoc><aggregate,gasp_pressure.nc><wait-for-local,false><pushFTP,true>",
+                "forcing-geoextent-pressure-laps" : "[x=65,y=-65,w=119.625,h=82.125]",
+                "forcing-timeextent-pressure-laps" : "[0,3]",
+                "alternate-forcing-presssure-laps" : "pressure-gasp",
+                "forcing-offset-pressure-laps" : "3",
+                "forcing-offset-pressure-gasp" : "6",
+                "forcing-offset-wind-laps" : "3",
+                "forcing-offset-wind-gasp" : "6",
+                "forcing-geoextent-wind-laps" : "[x=65,y=-65,w=119.625,h=82.125]",
+                "forcing-timeextent-wind-laps" : "[0,3]",
+                "alternate-forcing-wind-laps" : "wind-gasp",
+                "access_a_sfc" : "global-atmos/access-a-surface:<update-freq,6><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                "access_r_sfc" : "global-atmos/access-r-surface:<update-freq,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                "access_t_sfc" : "global-atmos/access-t-surface:<update-freq,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                "access_g_sfc" : "global-atmos/access-g-surface:<update-freq,12><pushFTP,false><translate,wind_v,v10><translate,wind_u,u10><translate,pressure,mslp><translate,temp,sfc_temp><translate,cloud,ttl_cld><extract,access2shoc.sh><aggregate,access_shoc.nc>",
+                "forcing-wait-access_a_sfc" : "36",
+                "forcing-wait-access_r_sfc" : "36",
+                "forcing-wait-access_t_sfc" : "36",
+                "forcing-wait-access_g_sfc" : "36",
+                "forcing-geoextent-access_a_sfc" : "[x=97.5,y=-52.5,w=72.19,h=57.23]",
+                "forcing-geoextent-access_r_sfc" : "[x=67.5,y=-62.5,w=119.375,h=79.625]",
+                "forcing-geoextent-access_t_sfc" : "[x=62.5,y=-42.5,w=154.625,h=198.975]",
+                "forcing-timeextent-access_a_sfc" : "[0,1.5]",
+                "forcing-timeextent-access_r_sfc" : "[0,2.5]",
+                "forcing-timeextent-access_t_sfc" : "[0,2.5]",
+                "forcing-timeextent-access_g_sfc" : "[,9]",
+                "forcing-offset-access_g_sfc" : "3",
+                "forcing-offset-access_a_sfc" : "1",
+                "forcing-offset-access_r_sfc" : "1",
+                "forcing-offset-access_t_sfc" : "1",
+                "alternate-forcing-access_a_sfc" : "access_r_sfc",
+                "alternate-forcing-access_r_sfc" : "access_t_sfc",
+                "alternate-forcing-access_t_sfc" : "access_g_sfc"
+            }
+        }, {
+            "command" : "parameters",
+            "params" : {
+                "ROBUST" : "6",
+                "SPEED" : "1"
+            }
+        }, {
+            "command" : "outputs",
+            "subcommands" : [ {
+                "command" : "output",
+                "params" : {
+                    "name" : "out_cf",
+                    "start" : "0 days",
+                    "stop" : "1 days",
+                    "interval" : "1 hours",
+                    "filetype" : "simple_cf",
+                    "post_process" : "statistics",
+                    "post_process_transfer" : "true",
+                    "variables" : "salt temp wind_u wind_v u v eta dens Kz sound",
+                    "mandatory" : "true",
+                    "enabled" : "true"
+                }
+            }, {
+                "command" : "output",
+                "params" : {
+                    "name" : "out_std",
+                    "start" : "0 days",
+                    "stop" : "1 days",
+                    "interval" : "6 hours",
+                    "filetype" : "standard",
+                    "post_process" : "statistics",
+                    "post_process_transfer" : "true",
+                    "enabled" : "true"
+                }
+            }, {
+                "command" : "output",
+                "params" : {
+                    "name" : "thales_cf",
+                    "start" : "0 days",
+                    "stop" : "1 days",
+                    "interval" : "1 hours",
+                    "filetype" : "simple_cf",
+                    "post_process" : "",
+                    "post_process_transfer" : "true",
+                    "variables" : "salt temp wind_u wind_v u v eta dens Kz sound",
+                    "enabled" : "false"
+                }
+            }, {
+                "command" : "output",
+                "params" : {
+                    "name" : "out_std_surf",
+                    "start" : "-4 days",
+                    "stop" : "1 days",
+                    "interval" : "1 hours",
+                    "filetype" : "standard",
+                    "post_process" : "",
+                    "post_process_transfer" : "false",
+                    "variables" : "ALL",
+                    "enabled" : "false"
+                }
+            } ]
+        } ]
+    } ]
+}

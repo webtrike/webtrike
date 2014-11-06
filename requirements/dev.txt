@@ -1,0 +1,7 @@
+-r common.txt
+Werkzeug==0.8.3
+django-nose==1.1
+ipdb==0.7
+ipython==0.13.2
+nose-exclude==0.1.9
+nose==1.2.1

@@ -1,0 +1,110 @@
+<div class="runalerts">
+</div>
+<div class="wizard-view">
+	<h3>Grid Definition</h3>    
+	<blockquote>Origin is large white circle, Longitude and Latitude are WGS84</blockquote>
+	<!-- display the OL map -->
+	<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+        <button data-toggle="tooltip" data-placement="bottom" title="Zoom to World" type="button" class="btn btn-small btn-default mapcontrols zoomfull"></button>
+        <button data-toggle="tooltip" data-placement="bottom" title="Zoom to Grid Definition" type="button" class="btn btn-small btn-default mapcontrols zoomlayer"></button>
+      </div>
+    </div> 
+		<div class="row-fluid">
+			<div class="span8">
+	  		<div id="map">
+				</div>
+        <div id="coords" style="height: 1.5em;float: right;"></div>
+			</div>
+
+			<!-- let users customize the grid details -->
+			<div class="span4">
+				<form class="form-horizontal">
+          <div class="control-group">
+            <div class="btn-group span4 offset4">
+              <a href="#" data-placement="bottom" class="btn" data-toggle="clickover" data-title="Choose datasets to display on map:">Forcing Datasets <span class="caret"></span></a>
+              <div data-forcing="forcingDatasets" class="hidden">
+                <div class="container-fluid">
+                  <table id="forcingTable" class="table table-condensed">
+                    <tbody>
+                    {{#each forcingDatasets}}
+                      <tr>
+                        <td>
+                          <span class="colour-box" style="background-color: {{this.colour}}"/></span>
+                        </td>
+                        <td>
+                          <label>&nbsp;<input type="checkbox" data-id="{{this.dataset}}" class="forcingCheck" data-colour="{{this.colour}}"> {{this.dataset}}</label>
+                        </td>
+                      </tr>
+                    {{/each}}
+                      <tr>
+                        <td colspan="2">
+                          <button type="button" class="btn btn-small btn-default hideAllForcing">Hide all</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+					  <label class="text-info">Type:</label>
+					  <label for="type" class="control-label">Shape:</label>
+            <div class="controls">
+					    <input class="editText input-medium" id="type" type="text" value="{{type}}" readonly="readonly"/>
+					  </div>
+					</div>
+					<div class="control-group hidden">
+					  <input class="edit input-small" id="x-origin" type="text" value="{{x-origin}}"/>
+				    <input class="edit input-small" id="y-origin" type="text" value="{{y-origin}}"/>
+					</div>
+          <div class="control-group">
+					  <label class="text-info">Origin:</label>
+					  <label for="x-transOrigin" class="control-label">X (Longitude):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="x-transOrigin" type="text" value=""/>
+            </div>
+					  <label for="y-transOrigin" class="control-label">Y (Latitude):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="y-transOrigin" type="text" value=""/>
+            </div>
+					</div>
+          <div class="control-group">
+					  <label class="text-info">Size:</label>
+					  <label for="ni" class="control-label">X (ni):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="ni" type="text" value="{{ni}}"/>
+            </div>
+					  <label for="nj" class="control-label">Y (nj):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="nj" type="text" value="{{nj}}"/>
+            </div>
+					</div>
+          <div class="control-group">
+					  <label class="text-info">Spacing:</label>
+					  <label for="dphi" class="control-label">X (dx metres):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="dphi" type="text" value="{{dx}}"/>
+            </div>
+					  <label for="dlambda" class="control-label">Y (dy metres):</label>
+            <div class="controls">
+						  <input class="edit input-small" id="dlambda" type="text" value="{{dy}}"/>
+            </div>
+					</div>
+          <div class="control-group">
+					  <label class="text-info">Rotation:</label>
+					  <label for="rotation" class="control-label">Angle (degrees):</label>
+            <div class="controls">
+						  <input class="edit input-small originmove" id="rotation" type="text" value="{{rotation}}"/>
+            </div>
+					</div>
+          <div class="control-group">
+            <button type="button" class="btn btn-small btn-default gridaction span4 offset4" disabled="disabled">Update Grid</button>
+          <div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

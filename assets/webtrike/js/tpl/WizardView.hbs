@@ -1,0 +1,50 @@
+	<div class="modal-header">
+		<div class="container-fluid">
+			<div class="row-fluid">
+      	<div class="span12">
+        	<div class="alert alert-info">
+            <a href="#" class="close closeModal">&times;</a>
+          	<strong>Model Run Specification</strong> Fill out the form fields and click next until all tabs are complete.
+        	</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="well">
+					<div style="float:left;">
+						<a href="#" role="button" class="btn btn-primary btn-previousView hide">&larr; Previous</a>
+					</div>
+		  		<div style="float:right;">
+						<a href="#" role="button" class="btn btn-primary btn-nextView hide">Next &rarr;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!-- modal-header -->
+
+	<div class="modal-body">
+		<div class="container-fluid">
+			<div class="row-fluid">
+      	<div class="span12">
+					<div class="modalcontent">
+						<div class="container-fluid">
+							<div class="row-fluid">
+								<div id="wizard">
+									<ul id="wizard-view-tabs" class="nav nav-tabs"></ul>
+								</div>
+								<div class="row-fluid">
+									<div id="wizard-view-container"></div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- content -->
+      	</div>         
+    	</div>
+		</div>
+	</div> <!-- modal-body -->
+
+	<!-- no modal-footer - we include the footer in the modal-body as we want
+	     to style it ourselves -->
+
+  <img src="static/webtrike/img/ajax-loader.gif" id="modal-loading-indicator" class="hide loadingIndicator"/>
