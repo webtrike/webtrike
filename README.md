@@ -163,6 +163,10 @@ interaction. We also use the bootstrap javascript components and
 [jquery datatables](https://datatables.net/) to manage the table of model 
 runs shown in the main view.
 
+### Documentation for Client Interface
+
+Developer documentation for the webtrike client interface uses ['jsdoc3'](https://github.com/jsdoc3/jsdoc). The documentation can be built using the script builddocs.sh and the jsdoc.conf file in the directory webtrike/assets/webtrike.
+
 ## Setup and Installation
 
 Installation is (mostly) done from `server/requirements.txt`, which
